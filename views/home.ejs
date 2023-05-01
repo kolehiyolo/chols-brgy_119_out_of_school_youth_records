@@ -1,0 +1,19 @@
+
+<%- include("partials/header"); -%>
+
+    <h1>Home</h1>
+    
+
+
+  <%  people.forEach(function(person){ %>
+
+    <h1><%=person.name.last%>, <%=person.name.first%> <%=person.name.middle%></h1>
+    <p>
+    <%=person.age%>
+    <a href="/posts/<%=person._id%>">Read More</a>
+    </p>
+
+    <% }) %>
+
+
+<%- include("partials/footer"); -%>
