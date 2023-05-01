@@ -1,4 +1,14 @@
-<%- include("partials/header"); -%>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<%- include("partials/head"); -%>
+
+<body>
+  <!-- * Header -->
+  <%- include("partials/header"); -%>
+
+  <!-- * Main -->
+  <main class="main main-add">
     <h1>Add person</h1>
     <form class="" action="/add" method="post">
       <div class="form-group">
@@ -38,9 +48,14 @@
           <input class="form-control" type="text" name="legalNameSuffix">
         </div>
         <!-- <label>Post</label>
-        <textarea class="form-control" name="postBody" rows="5" cols="30"></textarea> -->
+      <textarea class="form-control" name="postBody" rows="5" cols="30"></textarea> -->
       </div>
       <button class="btn btn-primary" type="submit" name="button">Publish</button>
     </form>
+  </main>
 
-<%- include("partials/footer"); -%>
+  <!-- * Footer -->
+  <%- include("partials/footer"); -%>
+</body>
+
+</html>
