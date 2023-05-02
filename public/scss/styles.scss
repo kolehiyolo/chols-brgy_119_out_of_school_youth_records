@@ -14,7 +14,7 @@ html body {
 
     &,
     & * {
-        border: dashed 1px red;
+        // border: dashed 1px red;
     }
 }
 
@@ -37,13 +37,9 @@ html {
                     form {
                         padding: 20px 0;
 
-                        input {
+                        input {}
 
-                        }
-
-                        button {
-
-                        }
+                        button {}
                     }
 
                     ul {
@@ -62,18 +58,14 @@ html {
                                     flex-direction: column;
                                     justify-content: center;
 
-                                    p {
-
-                                    }
+                                    p {}
 
                                     &:hover {
                                         color: #0d6efd;
                                     }
                                 }
 
-                                button {
-
-                                }
+                                button {}
                             }
                         }
                     }
@@ -97,12 +89,17 @@ html {
                     flex-direction: column;
                     gap: 5px;
 
-                    li {
-                        h1 {}
+                    a.list-group-item {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+                        
 
-                        p {
-                            a {}
-                        }
+                        .general {}
+
+                        .responsibility {}
+
+                        .academic {}
                     }
                 }
             }

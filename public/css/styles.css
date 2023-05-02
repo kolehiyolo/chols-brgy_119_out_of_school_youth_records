@@ -4,10 +4,6 @@ html body, html body * {
   box-sizing: border-box;
 }
 
-html body, html body * {
-  border: dashed 1px red;
-}
-
 html body {
   display: flex;
   flex-direction: column;
@@ -48,6 +44,11 @@ html body .main {
 html body .main .people-list-container .people-list {
   display: flex;
   flex-direction: column;
+  gap: 5px;
+}
+html body .main .people-list-container .people-list a.list-group-item {
+  display: flex;
+  flex-direction: row;
   gap: 5px;
 }
 html body .footer {

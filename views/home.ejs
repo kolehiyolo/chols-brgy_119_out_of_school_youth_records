@@ -9,19 +9,44 @@
 
   <!-- * Main -->
   <main class="main main-home">
-    <h1>Home</h1>
+    <h1>Out of School Youth</h1>
+
+    <!-- <ul class="list-group">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A fourth item</li>
+      <li class="list-group-item">And a fifth one</li>
+    </ul> -->
+
+    <!-- <div class="list-group">
+      <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+        The current link item
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+      <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+      <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+      <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+    </div> -->
 
     <!-- -* People Looping Generation -->
     <div class="people-list-container">
-      <ul class="people-list">
-        <% people.forEach(function(person){ %>
-        <li class="person-<%=person._id%>">
-          <h1><%=person.name.last%>, <%=person.name.first%> <%=person.name.middle%></h1>
-          <p>
-            <%=person.age%>
-            <a href="/posts/<%=person._id%>">Read More</a>
-          </p>
-        </li>
+      <ul class="people-list list-group">
+        <% persons.forEach(function(person){ %>
+        <a class="person-<%=person._id%> list-group-item list-group-item-action">
+          <div class="general">
+            <p class="name"><%=person.name.last%>, <%=person.name.first%> <%=person.name.middle%> <%=person.name.suffix%></p>
+            <p class="birthdate"><%=person.birthdate%></p>
+            <p class="age"><%=person.age%></p>
+            <p class="gender"><%=person.gender%></p>
+            <!-- <a href="/posts/<%=person._id%>">Read More</a> -->
+          </div>
+          <div class="responsibility">
+            <p class="legal-guardian"><%=person.legalGuardian.last%>, <%=person.legalGuardian.first%> <%=person.legalGuardian.middle%> <%=person.legalGuardian.suffix%></p>
+            <p class="legal-guardian-contact"><%=person.legalGuardianContact%></p>
+          </div>
+          <div class="academic"></div>
+        </a>
         <% }) %>
       </ul>
     </div>
