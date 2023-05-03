@@ -34,7 +34,7 @@ app.get("/", function (req, res) {
   console.log(`HOMEEE`);
   // Person.find({}, function (err, people) {
     console.log(placeholder.persons);
-    res.render("home", {
+    res.render("pages/home", {
       // startingContent: homeStartingContent,
       persons: placeholder.persons
     });
@@ -43,7 +43,7 @@ app.get("/", function (req, res) {
 
 app.get("/add", function (req, res) {
   console.log(`GET add`);
-  res.render("add");
+  res.render("pages/add");
 });
 
 // app.post("/add", function (req, res) {

@@ -22,11 +22,23 @@ const schema = {
         },
     },
     address: {
+        unit: {
+            type: String,
+            required: true
+        },
         lot: {
             type: String,
             required: true
         },
         street: {
+            type: String,
+            required: true,
+        },
+        zone: {
+            type: String,
+            required: true,
+        },
+        remarks: {
             type: String,
             required: true,
         },

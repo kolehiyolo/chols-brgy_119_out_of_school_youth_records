@@ -1,0 +1,305 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+html body, html body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html body, html body * {
+  font-family: "Montserrat", sans-serif;
+}
+
+@media (min-width: 0px) {
+  html body .navbar {
+    position: fixed;
+    padding: 0 100px;
+    width: 100%;
+    z-index: 10;
+    background-color: #7e22cd !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  html body .navbar .navbar-brand {
+    padding: 20px 0;
+    margin-right: auto;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+  }
+  html body .navbar .navbar-brand img {
+    width: 40px;
+  }
+  html body .navbar .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  html body .navbar .menu form {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  html body .navbar .menu form input {
+    height: 35px;
+  }
+  html body .navbar .menu form button {
+    padding: 0 15.5px;
+    width: 35px !important;
+    height: 35px;
+    position: relative;
+  }
+  html body .navbar .menu form button img {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  html body .navbar .menu ul {
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  html body .navbar .menu ul li a {
+    padding: 0;
+    height: 100%;
+  }
+  html body .navbar .menu ul li a.nav-link-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  html body .navbar .menu ul li a.nav-link-home:hover {
+    color: #0d6efd;
+  }
+  html body .navbar .menu ul li a button {
+    border-width: 3px;
+    font-size: 25px;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    position: relative;
+  }
+  html body .navbar .menu ul li a button p {
+    font-size: 23px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  html body .navbar .menu ul li a button img {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@media (min-width: 0px) {
+  html body .footer {
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #2b3035;
+    z-index: 10;
+  }
+  html body .footer p {
+    margin-top: 25px;
+    font-size: 12px;
+    color: #fff;
+  }
+}
+@media (min-width: 0px) {
+  html body .main-home .people-list-container .people-list,
+  html body .main-home * .people-list-container .people-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    z-index: 5;
+  }
+  html body .main-home .people-list-container .people-list a,
+  html body .main-home * .people-list-container .people-list a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 10px 20px;
+  }
+  html body .main-home .people-list-container .people-list a .general,
+  html body .main-home * .people-list-container .people-list a .general {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    width: 400px;
+  }
+  html body .main-home .people-list-container .people-list a .general .img img,
+  html body .main-home * .people-list-container .people-list a .general .img img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  html body .main-home .people-list-container .people-list a .general .text,
+  html body .main-home * .people-list-container .people-list a .general .text {
+    display: flex;
+    flex-direction: column;
+  }
+  html body .main-home .people-list-container .people-list a .general .text .name,
+  html body .main-home * .people-list-container .people-list a .general .text .name {
+    font-weight: bold;
+  }
+  html body .main-home .people-list-container .people-list a .general .text .sub,
+  html body .main-home * .people-list-container .people-list a .general .text .sub {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    gap: 5px;
+  }
+  html body .main-home .people-list-container .people-list a .general .text .sub *,
+  html body .main-home * .people-list-container .people-list a .general .text .sub * {
+    font-family: "Roboto", sans-serif;
+  }
+  html body .main-home .people-list-container .people-list a .general .text .sub .gender,
+  html body .main-home * .people-list-container .people-list a .general .text .sub .gender {
+    width: 15px;
+  }
+  html body .main-home .people-list-container .people-list a .responsibility,
+  html body .main-home * .people-list-container .people-list a .responsibility {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 300px;
+  }
+  html body .main-home .people-list-container .people-list a .responsibility .upper,
+  html body .main-home * .people-list-container .people-list a .responsibility .upper {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+  html body .main-home .people-list-container .people-list a .responsibility .upper *,
+  html body .main-home * .people-list-container .people-list a .responsibility .upper * {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+  }
+  html body .main-home .people-list-container .people-list a .responsibility .lower,
+  html body .main-home * .people-list-container .people-list a .responsibility .lower {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+  html body .main-home .people-list-container .people-list a .responsibility .lower *,
+  html body .main-home * .people-list-container .people-list a .responsibility .lower * {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+  }
+  html body .main-home .people-list-container .people-list a .academic,
+  html body .main-home * .people-list-container .people-list a .academic {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 300px;
+  }
+  html body .main-home .people-list-container .people-list a .academic .upper,
+  html body .main-home * .people-list-container .people-list a .academic .upper {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    font-weight: 500;
+  }
+  html body .main-home .people-list-container .people-list a .academic .upper *,
+  html body .main-home * .people-list-container .people-list a .academic .upper * {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+  }
+  html body .main-home .people-list-container .people-list a .academic .lower,
+  html body .main-home * .people-list-container .people-list a .academic .lower {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+  html body .main-home .people-list-container .people-list a .academic .lower *,
+  html body .main-home * .people-list-container .people-list a .academic .lower * {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+  }
+  html body .main-home .people-list-container .people-list a .academic .lower div,
+  html body .main-home * .people-list-container .people-list a .academic .lower div {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+  }
+  html body .main-home .people-list-container .people-list a .academic .lower div img,
+  html body .main-home * .people-list-container .people-list a .academic .lower div img {
+    width: 15px;
+  }
+  html body .main-home .people-list-container .people-list a .buttons,
+  html body .main-home * .people-list-container .people-list a .buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+  }
+  html body .main-home .people-list-container .people-list a .buttons button,
+  html body .main-home * .people-list-container .people-list a .buttons button {
+    width: 15px;
+    background: none;
+    height: 15px;
+    position: relative;
+    border: none;
+  }
+  html body .main-home .people-list-container .people-list a .buttons button img,
+  html body .main-home * .people-list-container .people-list a .buttons button img {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@media (min-width: 0px) {
+  html body .main-home {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 100px;
+    background-color: #ebf0f6;
+  }
+}
+@media (min-width: 0px) {
+  html body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    position: relative;
+  }
+  html body main {
+    padding-top: 100px !important;
+  }
+  html body .bg-wave {
+    position: fixed;
+    width: 100%;
+    bottom: 50px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+}/*# sourceMappingURL=index.css.map */

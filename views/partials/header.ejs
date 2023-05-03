@@ -1,26 +1,40 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Brgy. Sample</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar">
+  <a class="navbar-brand" href="/">
+    <!-- <img src="/svg/icon-home.svg" alt=""> -->
+    <p>Brgy. Sample - Out of School Youth</p>
+  </a>
+  <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="d-flex me-auto" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
+    </button> -->
+  <div class="menu" id="navbarSupportedContent">
+    <form class="d-flex" role="search">
+      <input class="form-control" type="text" placeholder="Search by name" aria-label="default input example">
+      <button type="button" class="btn btn-light" type="submit">
+        <img src="/svg/icon-search.svg" alt="">
+      </button>
+    </form>
+    <ul class="navbar-nav mb-2 mb-lg-0">
+      <!-- <li class="nav-item">
           <a class="nav-link active nav-link-home" aria-current="page" href="/">
             <p>Home</p>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-add" href="/add">
-            <button type="button" class="btn btn-outline-primary">Add</button>
-          </a>
-        </li>
-      </ul>
-    </div>
+        </li> -->
+      <li class="nav-item">
+        <a class="nav-link nav-link-delete" href="/deleted">
+          <button type="button" class="btn btn-light">
+            <img src="/svg/icon-delete.svg" alt="">
+            <!-- <p>+</p> -->
+          </button>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-link-add" href="/add">
+          <button type="button" class="btn btn-light">
+            <!-- <img src="/svg/icon-add.svg" alt=""> -->
+            <p>+</p>
+          </button>
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>

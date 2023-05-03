@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<%- include("../partials/head"); -%>
+
+<body>
+  <!-- * Header -->
+  <%- include("../partials/header"); -%>
+
+  <!-- * Main -->
+  <main class="main main-home">
+    <!-- <h1>Out of School Youth</h1> -->
+
+    <!-- -* People Looping Generation -->
+    <div class="people-list-container">
+      <ul class="people-list list-group">
+        <% persons.forEach(function(person){ %>
+        <a class="person-<%=person._id%> list-group-item list-group-item-action">
+          <div class="general">
+            <div class="img">
+              <!-- <img src="/images/placeholder-man.jpg" alt=""> -->
+              <img src="https://lh3.googleusercontent.com/drive-viewer/AFGJ81r7bDjkUhwHxxBQeBPdunQlxCdUwap6DdU2TYx5C8HJw8FArcxS6wFq679Ghcrmd6KpDPLaCVpHZI7gGl_ae5AJFsLBXg=w1920-h929" alt="">
+            </div>
+            <div class="text">
+              <p class="name">
+                <%=person.name.last%>,
+                <%=person.name.first%>
+                <%=person.name.middle%>
+                <%=person.name.suffix%>
+              </p>
+              <div class="sub">
+                <img class="gender" src="/svg/icon-<%=person.gender%>.svg" alt="">
+                <p class="age"><%=person.age%> yrs old</p>
+                <p> - </p>
+                <p class="birthdate"><%=person.birthdate%></p>
+              </div>
+            </div>
+          </div>
+          <div class="responsibility">
+            <div class="upper">
+              <p class="legal-guardian-contact">
+                +63<%=person.legalGuardianContact%>
+              </p>
+              <p class="legal-guardian">
+                <%=person.legalGuardian.last%>,
+                <%=person.legalGuardian.first%>
+                <%=person.legalGuardian.middle%>
+                <%=person.legalGuardian.suffix%>
+              </p>
+            </div>
+            <div class="lower">
+              
+              <p class="address">
+                <%=person.address.unit%>, 
+                <%=person.address.lot%>, 
+                <%=person.address.street%>, 
+                <%=person.address.zone%>
+              </p>
+            </div>
+          </div>
+          <div class="academic">
+            <div class="upper">
+              <p class="last-school-attendance">
+                <%=person.academic.lastSchoolAttendance%>
+              </p>
+              <p class="last-school">
+                <%=person.academic.lastSchool%>
+              </p>
+            </div>
+            <div class="lower">
+              <div class="oos-duration">
+                <img src="/svg/icon-duration.svg" alt="">
+                <p>
+                  <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance%>
+                  yrs
+                </p>
+              </div>
+              <div class="last-level">
+                <img src="/svg/icon-last.svg" alt="">
+                <p>
+                  Grade
+                  <%=person.academic.lastLevel%>
+                </p>
+              </div>
+              <div class="expected-level">
+                <img src="/svg/icon-expected.svg" alt="">
+                <p>
+                  Grade
+                  <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance + person.academic.lastLevel%>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="buttons">
+            <button class="delete">
+              <img src="/svg/icon-delete.svg" alt="">
+            </button>
+            <button class="edit">
+              <img src="/svg/icon-edit.svg" alt="">
+            </button>
+          </div>
+        </a>
+        <% }) %>
+      </ul>
+    </div>
+  </main>
+
+  <img src="/svg/bg-wave.svg" alt="" class="bg-wave">
+
+  <!-- * Footer -->
+  <%- include("../partials/footer"); -%>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+
+</html>

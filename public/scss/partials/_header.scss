@@ -1,0 +1,154 @@
+.navbar {
+
+    &,
+    * {
+        // border: dashed 1px red;
+    }
+
+    // * All Sizes
+    @media (min-width: 0px) {
+        position: fixed;
+        padding: 0 100px;
+        width: 100%;
+        z-index: 10;
+        // background-color: #4a377a80 !important;
+        // background-color: #6036e9 !important;
+        background-color: #7e22cd !important;
+        // background-color: #d5dbe4 !important;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .navbar-brand {
+            padding: 20px 0;
+            margin-right: auto;
+            color: white;
+            font-weight: 500;
+
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: center;
+
+            img {
+                width: 40px;
+                // height: 40px;
+            }
+
+            p {
+                
+            }
+        }
+
+        .menu {
+            // flex-grow: 1;
+            display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+            form {
+                padding: 20px 0;
+
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 20px;
+
+                input {
+                    height: 35px;
+                }
+
+                button {
+                    // border-width: 3px;
+                    // font-size: 25px;
+                    padding: 0 15.5px;
+                    width: 35px !important;
+                    height: 35px;
+                    position: relative;
+
+                    img {
+                        width: 15px;
+                        height: 15px;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+
+            ul {
+                gap: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+        
+
+                li {
+                    // padding: 10px 0;
+                    // margin-left: 20px;
+                    // display: flex;
+                    // flex-direction: row;
+
+                    a {
+                        padding: 0;
+                        height: 100%;
+
+                        &.nav-link-home {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+
+                            p {}
+
+                            &:hover {
+                                color: #0d6efd;
+                            }
+                        }
+
+                        button {
+                            border-width: 3px;
+                            font-size: 25px;
+                            padding: 0;
+                            width: 35px;
+                            height: 35px;
+                            position: relative;
+
+                            p {
+                                font-size: 23px;
+                                // height: 40px;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+
+                            img {
+                                width: 15px;
+                                height: 15px;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    // * Mobile Sizes
+    @media (min-width: 0px) and (max-width: 640px) {}
+
+    // * Mid-tablet Size
+    @media (min-width: 641px) and (max-width: 1000px) {}
+
+    // * Empty
+    @media (min-width: 10000000px) {}
+}
