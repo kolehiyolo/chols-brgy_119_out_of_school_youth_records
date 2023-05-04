@@ -14,7 +14,7 @@ const dbHandling = require(`./public/javascript/dbHandling.js`);
 // ! Fake Log In System
 let loggedIn = false;
 let username = "officialguy1";
-let password = "mesostrong0";
+let password = "mesostrongwow0";
 
 // * Setting EJS
 app.set('view engine', 'ejs');
@@ -177,7 +177,7 @@ app.get("/delete/:entryId", function (req, res) {
   });
 });
 
-app.listen(3001, function () {
+app.listen(3000, function () {
   console.log(`\n`);
   console.log("Server started on port 3000");
 });
