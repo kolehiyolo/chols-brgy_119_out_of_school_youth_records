@@ -1,0 +1,125 @@
+.main-add {
+
+    &,
+    * {
+        // border: dashed 1px red;
+    }
+
+    // * All Sizes
+    @media (min-width: 0px) {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 100px;
+        background-image: linear-gradient(30deg, rgba(71, 53, 233, 0.2), rgba(125, 34, 205, 0.2));
+        position: relative;
+            z-index: 5;
+
+        form {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 700px;
+
+            h1 {
+                // font-family: 'Roboto', sans-serif;
+                font-style: italic;
+                font-size: 25px;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                .form-sub-group {
+                    display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                    h2 {
+                        font-size: 20px;
+                    }
+
+                    .body {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+
+                        .form-row {
+                            display: flex;
+                            flex-direction: row;
+                            gap: 20px;
+
+                            label {
+                                * {
+                                    font-family: 'Roboto', sans-serif;
+                                }
+
+                                p {
+                                    font-size: 14px;
+                                }
+
+                                input {
+                                    font-size: 14px;
+                                    border-color: rgba(0, 0, 0, 0.3);
+                                }
+
+                                &.suffix {
+                                    width: 100px;
+                                }
+
+                                &.nickname {
+                                    width: 120px;
+                                }
+
+                                &.contact-number {
+width: 150px;
+                                }
+
+                                &.unit,
+                                &.lot {
+                                    width: 100px;
+                                }
+
+                                &.age {
+                                    width: 100px;
+                                }
+
+                                &.sex {
+                                    .input {
+                                        display: flex;
+                                        flex-direction: row;
+                                        gap: 10px;
+                                    }
+                                }
+
+                                &.last-grade-level {
+                                    input {
+                                        width: 110px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            button {}
+        }
+    }
+
+    // * Mobile Sizes
+    @media (min-width: 0px) and (max-width: 640px) {}
+
+    // * Mid-tablet Size
+    @media (min-width: 641px) and (max-width: 1000px) {}
+
+    // * Empty
+    @media (min-width: 10000000px) {}
+}

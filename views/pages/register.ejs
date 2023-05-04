@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<%- include("../partials/head"); -%>
+
+<body class="body-register">
+
+    <!-- * Main -->
+    <main class="main main-register">
+        <div class="head">
+            <img src="/images/logo-adu.png" alt="">
+            <h1>Registration</h1>
+            <img src="/images/logo-barangay.png" alt="">
+        </div>
+        <form action="/register" method="post">
+            <div class="personal">
+                <div class="form-row">
+                    <label>
+                        <p>Last Name</p>
+                        <input class="form-control" type="text" name="lastName" required placeholder="Dela Cruz" value="">
+                    </label>
+                    <label>
+                        <p>First Name</p>
+                        <input class="form-control" type="text" name="firstName" required placeholder="Juan" value="">
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label class="sex">
+                        <p>Sex</p>
+                        <div class="input">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sex" id="male" value="male" required checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sex" id="female" value="female" required>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </label>
+                    <label>
+                        <p>Birthdate</p>
+                        <input class="form-control" type="date" name="birthdate" required value="2000-01-01">
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <p>Government Position</p>
+                        <input class="form-control" type="text" name="governmentPosition" required placeholder="Brgy. Captain" value="">
+                    </label>
+                    <label>
+                        <p>Contact Number</p>
+                        <input class="form-control" type="text" name="contactNumber" required placeholder="09123456789" value="">
+                    </label>
+                </div>
+            </div>
+            <div class="credentials">
+                <label>
+                    <p>Email Address</p>
+                    <input class="form-control" type="email" name="email" required placeholder="juandelacruz@email.com" value="">
+                </label>
+                <label>
+                    <p>Username</p>
+                    <input class="form-control" type="text" name="username" required placeholder="Please enter your username" value="">
+                </label>
+                <label>
+                    <p>Password</p>
+                    <input class="form-control" type="password" name="password" required placeholder="Please enter your password" value="">
+                </label>
+            </div>
+            <div class="checkbox-terms">
+                <input type="checkbox" id="agreed" name="agreed" value="true">
+                <label for="agreed">I agree with the <a href="">terms and conditions</a>.</label>
+            </div>
+            <button class="btn btn-primary" type="submit" name="button">Register</button>
+        </form>
+    </main>
+
+    <!-- * Scripts -->
+    <%- include("../partials/scripts"); -%>
+</body>
+
+</html>

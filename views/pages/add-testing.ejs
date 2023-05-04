@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<%- include("../partials/head"); -%>
+
+<body>
+  <!-- * Header -->
+  <%- include("../partials/header"); -%>
+
+  <!-- * Main -->
+  <main class="main main-add">
+    <form class="" action="/add" method="post">
+      <!-- <h1>Add person</h1> -->
+      <div class="form-group">
+        <div class="general form-sub-group">
+          <h2>General</h2>
+          <div class="body">
+            <div class="form-row">
+              <label>
+                <p>Last Name</p>
+                <input class="form-control" type="text" name="nameLast" required value="Test">
+              </label>
+              <label>
+                <p>First Name</p>
+                <input class="form-control" type="text" name="nameFirst" required value="Test">
+              </label>
+              <label>
+                <p>Middle Name</p>
+                <input class="form-control" type="text" name="nameMiddle" required value="Test">
+              </label>
+              <label class="suffix">
+                <p>Suffix</p>
+                <input class="form-control" type="text" name="nameSuffix" value="Test">
+              </label>
+              <label class="nickname">
+                <p>Nickname</p>
+                <input class="form-control" type="text" name="nameNickname" required value="Test">
+              </label>
+            </div>
+            <div class="form-row">
+              <label>
+                <p>Image</p>
+                <input class="form-control" type="text" name="image" value="Test">
+              </label>
+              <label>
+                <p>Birthdate</p>
+                <input class="form-control" type="date" name="birthdate" required value="2000-01-01">
+              </label>
+              <label class="sex">
+                <p>Sex</p>
+                <div class="input">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sex" id="male" value="male" required checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sex" id="female" value="female" required>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Female
+                    </label>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="legal-guardian form-sub-group">
+          <h2>Legal Guardian</h2>
+          <div class="body">
+            <div class="form-row">
+              <label>
+                <p>Last Name</p>
+                <input class="form-control" type="text" name="legalNameLast" required value="Test">
+              </label>
+              <label>
+                <p>First Name</p>
+                <input class="form-control" type="text" name="legalNameFirst" required value="Test">
+              </label>
+              <label>
+                <p>Middle Name</p>
+                <input class="form-control" type="text" name="legalNameMiddle" required value="Test">
+              </label>
+              <label class="suffix">
+                <p>Suffix</p>
+                <input class="form-control" type="text" name="legalNameSuffix" value="Test">
+              </label>
+              <label class="nickname">
+                <p>Nickname</p>
+                <input class="form-control" type="text" name="legalNameNickname" required value="Test">
+              </label>
+            </div>
+            <div class="form-row">
+              <label class="contact-number">
+                <p>Contact Number</p>
+                <input class="form-control" type="text" name="legalGuardianContact" required value="09123456789">
+              </label>
+              <label class="unit">
+                <p>Unit</p>
+                <input class="form-control" type="text" name="addressUnit" value="Test">
+              </label>
+              <label class="lot">
+                <p>Lot #</p>
+                <input class="form-control" type="text" name="addressLot" required value="Test">
+              </label>
+              <label>
+                <p>Street</p>
+                <input class="form-control" type="text" name="addressStreet" required value="Test">
+              </label>
+              <label>
+                <p>Remarks</p>
+                <input class="form-control" type="text" name="addressRemarks" required value="Test">
+              </label>  
+            </div>
+          </div>
+        </div>
+        <div class="academics form-sub-group">
+          <h2>Academics</h2>
+          <div class="body">
+            <div class="form-row">
+              <label>
+                <p>Last School Attended</p>
+                <input class="form-control" type="text" name="academicLastSchool" required value="Test">
+              </label>
+              <label>
+                <p>Last School Year Attended</p>
+                <input class="form-control" type="number" name="academicLastSchoolAttendance" required value="2010">
+              </label>
+              <label>
+                <p>Last Grade Level</p>
+                <input class="form-control" type="number" name="academicLastLevel" required value="5">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit" name="button">Add</button>
+    </form>
+  </main>
+  
+  <div class="bg-filter"></div>
+  <div class="bg-image"></div>
+  
+  <!-- * Footer -->
+  <%- include("../partials/footer"); -%>
+
+  <!-- * Scripts -->
+  <%- include("../partials/scripts"); -%>
+</body>
+
+</html>

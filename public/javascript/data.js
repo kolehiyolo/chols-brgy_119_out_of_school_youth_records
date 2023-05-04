@@ -9,9 +9,9 @@ let samplePerson = {
         nickname: "Nickname",
         suffix: "Suffix",
     },
+    image: "https://lh3.googleusercontent.com/drive-viewer/AFGJ81r7bDjkUhwHxxBQeBPdunQlxCdUwap6DdU2TYx5C8HJw8FArcxS6wFq679Ghcrmd6KpDPLaCVpHZI7gGl_ae5AJFsLBXg=w1920-h929",
     birthdate: "January 1, 2000",
-    age: 10,
-    gender: "male",
+    sex: "male",
     legalGuardian: {
         last: "Last",
         first: "First",
@@ -24,7 +24,6 @@ let samplePerson = {
         unit: "Room 2",
         lot: "Lot 1",
         street: "Kalye Street",
-        zone: "Zone 1",
         remarks: "",
     },
     academic: {
@@ -50,7 +49,7 @@ function clone() {
         }
 
         persons[i]._id = `${zeroPrefix}${i}`;
-        console.log(persons[i]._id); 
+        // console.log(persons[i]._id); 
     }
 }
 

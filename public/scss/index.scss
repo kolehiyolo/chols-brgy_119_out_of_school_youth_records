@@ -33,10 +33,22 @@ html {
     }
 }
 
+html {
+    body {
+        div.tooltip-inner * {
+            font-family: "roboto", sans-serif;
+        }
+    }
+}
+
+@import "pages/login/login";
+@import "pages/register/register";
+
 html body {
     @import "partials/header";
     @import "partials/footer";
     @import "pages/home/home";
+    @import "pages/add/add";
 
     // * All Sizes
     @media (min-width: 0px) {
@@ -53,10 +65,33 @@ html body {
         .bg-wave {
             position: fixed;
             width: 100%;
-            bottom: 50px;
+            bottom: 0px;
             // height: 00px;
             z-index: 1;
-            opacity: 0.5;
+            opacity: 0.7;
+            opacity: 0;
+            filter:blur(2px);
+        }
+
+        .bg-filter {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(-30deg, rgba(71, 53, 233, 1), rgba(125, 34, 205, 1));
+            z-index: 3;
+            opacity: 0.7    ;
+        }
+
+        .bg-image {
+            background-image: url("../images/image-youth-2.jpg");
+            background-position: center;
+            background-size: cover;
+
+            position: fixed;
+            width: 100%;
+            height: 100%;
+
+            filter:blur(3px);
         }
     }
 

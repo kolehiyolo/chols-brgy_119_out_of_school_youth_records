@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<%- include("../partials/head"); -%>
+
+<body class="body-login">
+
+    <!-- * Main -->
+    <main class="main main-login">
+        <div class="head">
+            <img src="/images/logo-adu.png" alt="">
+            <h1>Welcome</h1>
+            <img src="/images/logo-barangay.png" alt="">
+        </div>
+        <form action="/login" method="post">
+            <% if (failedLogin){ %>
+                <p class="failed-login">Failed Log In! Please try again</p>
+            <% } %>
+            <label>
+                <p>Username</p>
+                <input class="form-control" type="text" name="username" required placeholder="Please enter your username" value="officialguy1">
+            </label>
+            <label>
+                <p>Password</p>
+                <input class="form-control" type="password" name="password" required placeholder="Please enter your password" value="mesostrong0">
+            </label>
+            <span class="forgot-password" href="#" data-bs-toggle="tooltip" data-bs-title="Contact the Developers">Forgot password?</span>
+            <button class="btn btn-primary" type="submit" name="button">Login</button>
+        </form>
+        <div class="register">
+            <p>Don't have an account?</p>
+            <a href="/register">Sign Up</a>
+        </div>
+    </main>
+
+    <!-- * Scripts -->
+  <%- include("../partials/scripts"); -%>
+</body>
+
+</html>

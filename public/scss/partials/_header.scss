@@ -13,7 +13,10 @@
         z-index: 10;
         // background-color: #4a377a80 !important;
         // background-color: #6036e9 !important;
-        background-color: #7e22cd !important;
+        // background-color: #7e22cd !important;
+        background-image: linear-gradient(30deg, rgb(72, 54, 233), rgba(125, 34, 205, 0.8));
+        background-image: linear-gradient(30deg, rgb(14, 11, 44), rgba(52, 18, 82, 0.8));
+        // background-image: linear-gradient(30deg, hsla(0, 0%, 0%, 0.452), rgba(125, 34, 205, 0.644));
         // background-color: #d5dbe4 !important;
 
         display: flex;
@@ -37,17 +40,28 @@
             }
 
             p {
-                
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0px;
+                // font-family: 'Roboto', sans-serif;
+                span {
+                    text-transform: uppercase;
+                    font-family: 'Roboto', sans-serif;
+                    color: rgba(255, 255, 255, 0.7);
+                    font-weight: normal;
+                    font-size: 14px;
+                }
             }
         }
 
         .menu {
             // flex-grow: 1;
             display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
 
             form {
                 padding: 20px 0;
@@ -60,6 +74,7 @@
 
                 input {
                     height: 35px;
+                    font-family: "roboto", sans-serif;
                 }
 
                 button {
@@ -86,7 +101,7 @@
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
-        
+
 
                 li {
                     // padding: 10px 0;

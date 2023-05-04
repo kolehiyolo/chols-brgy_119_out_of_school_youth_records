@@ -1,0 +1,161 @@
+.body-register {
+
+    &,
+    * {
+        // border: dashed 1px red;
+    }
+
+    // * All Sizes
+    @media (min-width: 0px) {
+        background-image: url("../images/image-pasaycityhall.jpg");
+        background-position: center;
+        background-size: cover;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .main-register {
+            border-radius: 7px;
+            background-color: white;
+            // padding-top: 0 !important;
+            padding: 24px !important;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .head {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 10px;
+                align-items: center;
+                margin-bottom: 20px;
+
+                h1 {
+                    // font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                    font-size: 35px;
+                }
+
+                img {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 25px;
+
+                p.failed-login {
+                    color: red;
+                    font-weight: bold;
+                }
+
+                * {
+                    font-family: "roboto";
+                }
+
+                label {
+                    p {
+                        margin-bottom: 5px;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+
+                    input {
+                        // width: 525px;
+                        box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+
+                    }
+                }
+
+                .personal {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    .form-row {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 25px;
+
+                        label {
+                            p {}
+
+                            input {
+                                width: 200px;
+                            }
+
+                            &.sex {
+                                .input {
+                                    display: flex;
+                                    flex-direction: row;
+                                    gap: 10px;
+                                    width: 200px;
+
+                                    input {
+                                        width: 16px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .credentials {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    label {
+                        p {}
+
+                        input {
+                            width: 425px;
+                        }
+                    }
+                }
+
+                .checkbox-terms {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+
+                    input {
+
+                    }
+
+                    label {
+                        &, * {
+                            font-family: "roboto";
+                        }
+
+                        a {
+                            color: rgb(126, 34, 206);
+                        }
+                    }
+                }
+
+                button {
+                    margin-top: 20px;
+                    width: 100%;
+                    background-color: rgb(126, 34, 206);
+                    border: none;
+                }
+            }
+        }
+    }
+
+    // * Mobile Sizes
+    @media (min-width: 0px) and (max-width: 640px) {}
+
+    // * Mid-tablet Size
+    @media (min-width: 641px) and (max-width: 1000px) {}
+
+    // * Empty
+    @media (min-width: 10000000px) {}
+}

@@ -1,7 +1,8 @@
 <nav class="navbar">
   <a class="navbar-brand" href="/">
     <!-- <img src="/svg/icon-home.svg" alt=""> -->
-    <p>Brgy. Sample - Out of School Youth</p>
+    <img src="/images/logo-barangay.png" alt="">
+    <p>Brgy. 119, Zone 14 <span>Out of School Youth</span></p>
   </a>
   <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,7 +20,7 @@
             <p>Home</p>
           </a>
         </li> -->
-      <li class="nav-item">
+      <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Deleted Entries">
         <a class="nav-link nav-link-delete" href="/deleted">
           <button type="button" class="btn btn-light">
             <img src="/svg/icon-delete.svg" alt="">
@@ -27,11 +28,19 @@
           </button>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Add New Entry">
         <a class="nav-link nav-link-add" href="/add">
           <button type="button" class="btn btn-light">
             <!-- <img src="/svg/icon-add.svg" alt=""> -->
             <p>+</p>
+          </button>
+        </a>
+      </li>
+      <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Log out">
+        <a class="nav-link nav-link-add" href="/logout">
+          <button type="button" class="btn btn-light">
+            <!-- <img src="/svg/icon-add.svg" alt=""> -->
+            <img src="/svg/icon-logout.svg" alt="">
           </button>
         </a>
       </li>

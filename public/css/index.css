@@ -10,13 +10,194 @@ html body, html body * {
   font-family: "Montserrat", sans-serif;
 }
 
+html body div.tooltip-inner * {
+  font-family: "roboto", sans-serif;
+}
+
+@media (min-width: 0px) {
+  .body-login {
+    background-image: url("../images/image-pasaycityhall.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .body-login .main-login {
+    border-radius: 7px;
+    background-color: white;
+    padding: 24px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .body-login .main-login .head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .body-login .main-login .head h1 {
+    font-size: 35px;
+  }
+  .body-login .main-login .head img {
+    width: 80px;
+    height: 80px;
+  }
+  .body-login .main-login form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .body-login .main-login form p.failed-login {
+    color: red;
+    font-weight: bold;
+  }
+  .body-login .main-login form label p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .body-login .main-login form label input {
+    width: 525px;
+    box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+  }
+  .body-login .main-login form span {
+    font-size: 12px;
+    color: rgb(126, 34, 206);
+  }
+  .body-login .main-login form button {
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgb(126, 34, 206);
+    border: none;
+  }
+  .body-login .main-login .register {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    font-size: 12px;
+  }
+  .body-login .main-login .register a {
+    color: rgb(126, 34, 206);
+  }
+}
+@media (min-width: 0px) {
+  .body-register {
+    background-image: url("../images/image-pasaycityhall.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .body-register .main-register {
+    border-radius: 7px;
+    background-color: white;
+    padding: 24px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .body-register .main-register .head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .body-register .main-register .head h1 {
+    font-size: 35px;
+  }
+  .body-register .main-register .head img {
+    width: 80px;
+    height: 80px;
+  }
+  .body-register .main-register form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+  .body-register .main-register form p.failed-login {
+    color: red;
+    font-weight: bold;
+  }
+  .body-register .main-register form * {
+    font-family: "roboto";
+  }
+  .body-register .main-register form label p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .body-register .main-register form label input {
+    box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+  }
+  .body-register .main-register form .personal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .body-register .main-register form .personal .form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+  }
+  .body-register .main-register form .personal .form-row label input {
+    width: 200px;
+  }
+  .body-register .main-register form .personal .form-row label.sex .input {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 200px;
+  }
+  .body-register .main-register form .personal .form-row label.sex .input input {
+    width: 16px;
+  }
+  .body-register .main-register form .credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .body-register .main-register form .credentials label input {
+    width: 425px;
+  }
+  .body-register .main-register form .checkbox-terms {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .body-register .main-register form .checkbox-terms label, .body-register .main-register form .checkbox-terms label * {
+    font-family: "roboto";
+  }
+  .body-register .main-register form .checkbox-terms label a {
+    color: rgb(126, 34, 206);
+  }
+  .body-register .main-register form button {
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgb(126, 34, 206);
+    border: none;
+  }
+}
 @media (min-width: 0px) {
   html body .navbar {
     position: fixed;
     padding: 0 100px;
     width: 100%;
     z-index: 10;
-    background-color: #7e22cd !important;
+    background-image: linear-gradient(30deg, rgb(72, 54, 233), rgba(125, 34, 205, 0.8));
+    background-image: linear-gradient(30deg, rgb(14, 11, 44), rgba(52, 18, 82, 0.8));
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -33,6 +214,19 @@ html body, html body * {
   }
   html body .navbar .navbar-brand img {
     width: 40px;
+  }
+  html body .navbar .navbar-brand p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+  }
+  html body .navbar .navbar-brand p span {
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: normal;
+    font-size: 14px;
   }
   html body .navbar .menu {
     display: flex;
@@ -51,6 +245,7 @@ html body, html body * {
   }
   html body .navbar .menu form input {
     height: 35px;
+    font-family: "roboto", sans-serif;
   }
   html body .navbar .menu form button {
     padding: 0 15.5px;
@@ -133,8 +328,8 @@ html body, html body * {
     position: relative;
     z-index: 5;
   }
-  html body .main-home .people-list-container .people-list a,
-  html body .main-home * .people-list-container .people-list a {
+  html body .main-home .people-list-container .people-list li,
+  html body .main-home * .people-list-container .people-list li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -142,131 +337,135 @@ html body, html body * {
     gap: 5px;
     padding: 10px 20px;
   }
-  html body .main-home .people-list-container .people-list a .general,
-  html body .main-home * .people-list-container .people-list a .general {
+  html body .main-home .people-list-container .people-list li .general,
+  html body .main-home * .people-list-container .people-list li .general {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 15px;
     width: 400px;
   }
-  html body .main-home .people-list-container .people-list a .general .img img,
-  html body .main-home * .people-list-container .people-list a .general .img img {
+  html body .main-home .people-list-container .people-list li .general .img img,
+  html body .main-home * .people-list-container .people-list li .general .img img {
     border-radius: 50%;
     width: 50px;
     height: 50px;
   }
-  html body .main-home .people-list-container .people-list a .general .text,
-  html body .main-home * .people-list-container .people-list a .general .text {
+  html body .main-home .people-list-container .people-list li .general .text,
+  html body .main-home * .people-list-container .people-list li .general .text {
     display: flex;
     flex-direction: column;
   }
-  html body .main-home .people-list-container .people-list a .general .text .name,
-  html body .main-home * .people-list-container .people-list a .general .text .name {
+  html body .main-home .people-list-container .people-list li .general .text .name,
+  html body .main-home * .people-list-container .people-list li .general .text .name {
     font-weight: bold;
   }
-  html body .main-home .people-list-container .people-list a .general .text .sub,
-  html body .main-home * .people-list-container .people-list a .general .text .sub {
+  html body .main-home .people-list-container .people-list li .general .text .sub,
+  html body .main-home * .people-list-container .people-list li .general .text .sub {
     display: flex;
     flex-direction: row;
     align-items: center;
     font-size: 14px;
     gap: 5px;
   }
-  html body .main-home .people-list-container .people-list a .general .text .sub *,
-  html body .main-home * .people-list-container .people-list a .general .text .sub * {
+  html body .main-home .people-list-container .people-list li .general .text .sub *,
+  html body .main-home * .people-list-container .people-list li .general .text .sub * {
     font-family: "Roboto", sans-serif;
   }
-  html body .main-home .people-list-container .people-list a .general .text .sub .gender,
-  html body .main-home * .people-list-container .people-list a .general .text .sub .gender {
+  html body .main-home .people-list-container .people-list li .general .text .sub .sex,
+  html body .main-home * .people-list-container .people-list li .general .text .sub .sex {
     width: 15px;
   }
-  html body .main-home .people-list-container .people-list a .responsibility,
-  html body .main-home * .people-list-container .people-list a .responsibility {
+  html body .main-home .people-list-container .people-list li .responsibility,
+  html body .main-home * .people-list-container .people-list li .responsibility {
     display: flex;
     flex-direction: column;
     gap: 5px;
     width: 300px;
   }
-  html body .main-home .people-list-container .people-list a .responsibility .upper,
-  html body .main-home * .people-list-container .people-list a .responsibility .upper {
+  html body .main-home .people-list-container .people-list li .responsibility .upper,
+  html body .main-home * .people-list-container .people-list li .responsibility .upper {
     display: flex;
     flex-direction: row;
     gap: 5px;
   }
-  html body .main-home .people-list-container .people-list a .responsibility .upper *,
-  html body .main-home * .people-list-container .people-list a .responsibility .upper * {
+  html body .main-home .people-list-container .people-list li .responsibility .upper *,
+  html body .main-home * .people-list-container .people-list li .responsibility .upper * {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
   }
-  html body .main-home .people-list-container .people-list a .responsibility .lower,
-  html body .main-home * .people-list-container .people-list a .responsibility .lower {
+  html body .main-home .people-list-container .people-list li .responsibility .lower,
+  html body .main-home * .people-list-container .people-list li .responsibility .lower {
     display: flex;
     flex-direction: row;
     gap: 15px;
   }
-  html body .main-home .people-list-container .people-list a .responsibility .lower *,
-  html body .main-home * .people-list-container .people-list a .responsibility .lower * {
+  html body .main-home .people-list-container .people-list li .responsibility .lower *,
+  html body .main-home * .people-list-container .people-list li .responsibility .lower * {
     font-family: "Roboto", sans-serif;
     font-size: 12px;
   }
-  html body .main-home .people-list-container .people-list a .academic,
-  html body .main-home * .people-list-container .people-list a .academic {
+  html body .main-home .people-list-container .people-list li .academic,
+  html body .main-home * .people-list-container .people-list li .academic {
     display: flex;
     flex-direction: column;
     gap: 5px;
     width: 300px;
   }
-  html body .main-home .people-list-container .people-list a .academic .upper,
-  html body .main-home * .people-list-container .people-list a .academic .upper {
+  html body .main-home .people-list-container .people-list li .academic .upper,
+  html body .main-home * .people-list-container .people-list li .academic .upper {
     display: flex;
     flex-direction: row;
     gap: 5px;
     font-weight: 500;
   }
-  html body .main-home .people-list-container .people-list a .academic .upper *,
-  html body .main-home * .people-list-container .people-list a .academic .upper * {
+  html body .main-home .people-list-container .people-list li .academic .upper *,
+  html body .main-home * .people-list-container .people-list li .academic .upper * {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
   }
-  html body .main-home .people-list-container .people-list a .academic .lower,
-  html body .main-home * .people-list-container .people-list a .academic .lower {
+  html body .main-home .people-list-container .people-list li .academic .lower,
+  html body .main-home * .people-list-container .people-list li .academic .lower {
     display: flex;
     flex-direction: row;
     gap: 15px;
   }
-  html body .main-home .people-list-container .people-list a .academic .lower *,
-  html body .main-home * .people-list-container .people-list a .academic .lower * {
+  html body .main-home .people-list-container .people-list li .academic .lower *,
+  html body .main-home * .people-list-container .people-list li .academic .lower * {
     font-family: "Roboto", sans-serif;
     font-size: 12px;
   }
-  html body .main-home .people-list-container .people-list a .academic .lower div,
-  html body .main-home * .people-list-container .people-list a .academic .lower div {
+  html body .main-home .people-list-container .people-list li .academic .lower div,
+  html body .main-home * .people-list-container .people-list li .academic .lower div {
     display: flex;
     flex-direction: row;
     gap: 5px;
     align-items: center;
   }
-  html body .main-home .people-list-container .people-list a .academic .lower div img,
-  html body .main-home * .people-list-container .people-list a .academic .lower div img {
+  html body .main-home .people-list-container .people-list li .academic .lower div img,
+  html body .main-home * .people-list-container .people-list li .academic .lower div img {
     width: 15px;
   }
-  html body .main-home .people-list-container .people-list a .buttons,
-  html body .main-home * .people-list-container .people-list a .buttons {
+  html body .main-home .people-list-container .people-list li .buttons,
+  html body .main-home * .people-list-container .people-list li .buttons {
     display: flex;
     flex-direction: row-reverse;
     gap: 10px;
   }
-  html body .main-home .people-list-container .people-list a .buttons button,
-  html body .main-home * .people-list-container .people-list a .buttons button {
+  html body .main-home .people-list-container .people-list li .buttons a,
+  html body .main-home * .people-list-container .people-list li .buttons a {
+    display: block;
+  }
+  html body .main-home .people-list-container .people-list li .buttons a button,
+  html body .main-home * .people-list-container .people-list li .buttons a button {
     width: 15px;
     background: none;
     height: 15px;
     position: relative;
     border: none;
   }
-  html body .main-home .people-list-container .people-list a .buttons button img,
-  html body .main-home * .people-list-container .people-list a .buttons button img {
+  html body .main-home .people-list-container .people-list li .buttons a button img,
+  html body .main-home * .people-list-container .people-list li .buttons a button img {
     width: 15px;
     height: 15px;
     position: absolute;
@@ -281,7 +480,88 @@ html body, html body * {
     display: flex;
     flex-direction: column;
     padding: 50px 100px;
-    background-color: #ebf0f6;
+    background-image: linear-gradient(30deg, rgba(71, 53, 233, 0.2), rgba(125, 34, 205, 0.2));
+  }
+}
+@media (min-width: 0px) {
+  html body .main-add {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 100px;
+    background-image: linear-gradient(30deg, rgba(71, 53, 233, 0.2), rgba(125, 34, 205, 0.2));
+    position: relative;
+    z-index: 5;
+  }
+  html body .main-add form {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 700px;
+  }
+  html body .main-add form h1 {
+    font-style: italic;
+    font-size: 25px;
+  }
+  html body .main-add form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  html body .main-add form .form-group .form-sub-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  html body .main-add form .form-group .form-sub-group h2 {
+    font-size: 20px;
+  }
+  html body .main-add form .form-group .form-sub-group .body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row label * {
+    font-family: "Roboto", sans-serif;
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row label p {
+    font-size: 14px;
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row label input {
+    font-size: 14px;
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row label.suffix {
+    width: 100px;
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row label.nickname {
+    width: 120px;
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row label.contact-number {
+    width: 150px;
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row label.unit, html body .main-add form .form-group .form-sub-group .body .form-row label.lot {
+    width: 100px;
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row label.age {
+    width: 100px;
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row label.sex .input {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  html body .main-add form .form-group .form-sub-group .body .form-row label.last-grade-level input {
+    width: 110px;
   }
 }
 @media (min-width: 0px) {
@@ -298,8 +578,27 @@ html body, html body * {
   html body .bg-wave {
     position: fixed;
     width: 100%;
-    bottom: 50px;
+    bottom: 0px;
     z-index: 1;
-    opacity: 0.5;
+    opacity: 0.7;
+    opacity: 0;
+    filter: blur(2px);
+  }
+  html body .bg-filter {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(-30deg, rgb(71, 53, 233), rgb(125, 34, 205));
+    z-index: 3;
+    opacity: 0.7;
+  }
+  html body .bg-image {
+    background-image: url("../images/image-youth-2.jpg");
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    filter: blur(3px);
   }
 }/*# sourceMappingURL=index.css.map */

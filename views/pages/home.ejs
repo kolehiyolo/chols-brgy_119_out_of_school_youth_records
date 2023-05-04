@@ -15,91 +15,136 @@
     <div class="people-list-container">
       <ul class="people-list list-group">
         <% persons.forEach(function(person){ %>
-        <a class="person-<%=person._id%> list-group-item list-group-item-action">
-          <div class="general">
-            <div class="img">
-              <!-- <img src="/images/placeholder-man.jpg" alt=""> -->
-              <img src="https://lh3.googleusercontent.com/drive-viewer/AFGJ81r7bDjkUhwHxxBQeBPdunQlxCdUwap6DdU2TYx5C8HJw8FArcxS6wFq679Ghcrmd6KpDPLaCVpHZI7gGl_ae5AJFsLBXg=w1920-h929" alt="">
-            </div>
-            <div class="text">
-              <p class="name">
-                <%=person.name.last%>,
-                <%=person.name.first%>
-                <%=person.name.middle%>
-                <%=person.name.suffix%>
-              </p>
-              <div class="sub">
-                <img class="gender" src="/svg/icon-<%=person.gender%>.svg" alt="">
-                <p class="age"><%=person.age%> yrs old</p>
-                <p> - </p>
-                <p class="birthdate"><%=person.birthdate%></p>
+          
+          <li class="person-<%=person._id%> list-group-item list-group-item-action">    
+            <div class="general"
+              data-bs-toggle="tooltip" 
+              data-bs-html="true"
+              data-bs-title="
+                <p><b>Full Name: </b></p>
+                <p><%=person.name.last%>,
+                  <%=person.name.first%>
+                  <%=person.name.middle%>
+                  <%=person.name.suffix%></p>
+                <p><b>Age: </b><%=(new Date().getFullYear()) - parseInt(person.birthdate.getFullYear())%> yrs old</p>
+                <p><b>Birthdate: </b><%=person.birthdate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })%></div></p>
+                <p><b>Sex: </b><%=person.sex.slice(0,1).toUpperCase()+person.sex.slice(1)%></p>
+              ">
+              <div class="img">
+                <!-- <img src="/images/placeholder-man.jpg" alt=""> -->
+                <img src="<%=person.image%>" alt="">
+              </div>
+              <div class="text">
+                <p class="name">
+                  <%=person.name.last%>,
+                  <%=person.name.first%>
+                  <%=person.name.middle%>
+                  <%=person.name.suffix%>
+                </p>
+                <div class="sub">
+                  <img class="sex" src="/svg/icon-<%=person.sex%>.svg" alt="">
+                  <p class="age"><%=(new Date().getFullYear()) - parseInt(person.birthdate.getFullYear())%> yrs old</p>
+                  <p> - </p>
+                  <p class="birthdate"><%=person.birthdate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })%></p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="responsibility">
-            <div class="upper">
-              <p class="legal-guardian-contact">
-                +63<%=person.legalGuardianContact%>
-              </p>
-              <p class="legal-guardian">
-                <%=person.legalGuardian.last%>,
-                <%=person.legalGuardian.first%>
-                <%=person.legalGuardian.middle%>
-                <%=person.legalGuardian.suffix%>
-              </p>
-            </div>
-            <div class="lower">
-              
-              <p class="address">
-                <%=person.address.unit%>, 
-                <%=person.address.lot%>, 
-                <%=person.address.street%>, 
-                <%=person.address.zone%>
-              </p>
-            </div>
-          </div>
-          <div class="academic">
-            <div class="upper">
-              <p class="last-school-attendance">
-                <%=person.academic.lastSchoolAttendance%>
-              </p>
-              <p class="last-school">
-                <%=person.academic.lastSchool%>
-              </p>
-            </div>
-            <div class="lower">
-              <div class="oos-duration">
-                <img src="/svg/icon-duration.svg" alt="">
-                <p>
-                  <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance%>
-                  yrs
+            <div class="responsibility"
+              data-bs-toggle="tooltip" 
+              data-bs-html="true"
+              data-bs-title="
+                <p><b>Legal Guardian: </b></p>
+                <p><%=person.legalGuardian.last%>,
+                  <%=person.legalGuardian.first%>
+                  <%=person.legalGuardian.middle%>
+                  <%=person.legalGuardian.suffix%></p>
+                <p><b>Contact #: </b><%=person.legalGuardianContact%></p>
+                <p><b>Address: </b>
+                  <% if (person.address.unit){ %>
+                    <%=person.address.unit%>,
+                  <% } %>
+                  <%=person.address.lot%>,
+                  <%=person.address.street%></p>
+              "
+            >
+              <div class="upper">
+                <p class="legal-guardian-contact">
+                  <%=person.legalGuardianContact%>
+                </p>
+                <p class="legal-guardian">
+                  <%=person.legalGuardian.last%>,
+                  <%=person.legalGuardian.first%>
+                  <%=person.legalGuardian.middle%>
+                  <%=person.legalGuardian.suffix%>
                 </p>
               </div>
-              <div class="last-level">
-                <img src="/svg/icon-last.svg" alt="">
-                <p>
-                  Grade
-                  <%=person.academic.lastLevel%>
-                </p>
-              </div>
-              <div class="expected-level">
-                <img src="/svg/icon-expected.svg" alt="">
-                <p>
-                  Grade
-                  <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance + person.academic.lastLevel%>
+              <div class="lower">
+                <p class="address">
+                  <% if (person.address.unit){ %>
+                    <%=person.address.unit%>,
+                  <% } %>
+                  <%=person.address.lot%>,
+                  <%=person.address.street%>
                 </p>
               </div>
             </div>
-          </div>
-          <div class="buttons">
-            <button class="delete">
-              <img src="/svg/icon-delete.svg" alt="">
-            </button>
-            <button class="edit">
-              <img src="/svg/icon-edit.svg" alt="">
-            </button>
-          </div>
-        </a>
+            <div class="academic"
+              data-bs-toggle="tooltip" 
+              data-bs-html="true"
+              data-bs-title="
+              <p><b>Last School: </b></p>
+              <p><%=person.academic.lastSchool%></p>
+              <p><b>Last School Year: </b><%=person.academic.lastSchoolAttendance%></p>
+                <p><b>Out-of-School for: </b><%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance%> yrs</p>
+                <p><b>Last Grade Level: </b>Grade
+                  <%=person.academic.lastLevel%></p>
+                <p><b>Expected Level: </b>Grade
+                  <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance + parseInt(person.academic.lastLevel)%></p>
+              "
+            >
+              <div class="upper">
+                <p class="last-school-attendance">
+                  <%=person.academic.lastSchoolAttendance%>
+                </p>
+                <p class="last-school">
+                  <%=person.academic.lastSchool%>
+                </p>
+              </div>
+              <div class="lower">
+                <div class="oos-duration">
+                  <img src="/svg/icon-duration.svg" alt="">
+                  <p>
+                    <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance%>
+                    yrs
+                  </p>
+                </div>
+                <div class="last-level">
+                  <img src="/svg/icon-last.svg" alt="">
+                  <p>
+                    Grade
+                    <%=person.academic.lastLevel%>
+                  </p>
+                </div>
+                <div class="expected-level">
+                  <img src="/svg/icon-expected.svg" alt="">
+                  <p>
+                    Grade
+                    <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance + parseInt(person.academic.lastLevel)%>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="buttons">
+              <a href="/delete/<%=person._id%>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Delete this Entry">
+                <button class="delete">
+                  <img src="/svg/icon-delete.svg" alt="">
+                </button>
+              </a>
+              <!-- <button class="edit">
+                <img src="/svg/icon-edit.svg" alt="">
+              </button> -->
+            </div>
+          </li>
         <% }) %>
       </ul>
     </div>
@@ -107,10 +152,14 @@
 
   <img src="/svg/bg-wave.svg" alt="" class="bg-wave">
 
+  <div class="bg-filter"></div>
+  <div class="bg-image"></div>
+
   <!-- * Footer -->
   <%- include("../partials/footer"); -%>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <!-- * Scripts -->
+  <%- include("../partials/scripts"); -%>
 </body>
 
 </html>
