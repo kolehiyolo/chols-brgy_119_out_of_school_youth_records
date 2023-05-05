@@ -28,7 +28,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/barangayDB", {
 });
 
 // ! Fake Log In System
-let loggedIn = true;
+let loggedIn = false;
 let username = "officialguy1";
 let password = "mesostrongwow0";
 
