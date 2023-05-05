@@ -14,13 +14,9 @@
     <!-- -* People Looping Generation -->
     <div class="people-list-container">
       <ul class="people-list list-group">
-        <% persons.forEach(function(person){ %>
-          
-          <li class="person-<%=person._id%> list-group-item list-group-item-action">    
-            <div class="general"
-              data-bs-toggle="tooltip" 
-              data-bs-html="true"
-              data-bs-title="
+        <% peopleExpected.forEach(function(person){ %>
+        <li class="person-<%=person._id%> list-group-item list-group-item-action">
+          <div class="general" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="
                 <p><b>Full Name: </b></p>
                 <p><%=person.name.last%>,
                   <%=person.name.first%>
@@ -30,29 +26,26 @@
                 <p><b>Birthdate: </b><%=person.birthdate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })%></div></p>
                 <p><b>Sex: </b><%=person.sex.slice(0,1).toUpperCase()+person.sex.slice(1)%></p>
               ">
-              <div class="img">
-                <!-- <img src="/images/placeholder-man.jpg" alt=""> -->
-                <img src="<%=person.image%>" alt="">
-              </div>
-              <div class="text">
-                <p class="name">
-                  <%=person.name.last%>,
-                  <%=person.name.first%>
-                  <%=person.name.middle%>
-                  <%=person.name.suffix%>
-                </p>
-                <div class="sub">
-                  <img class="sex" src="/svg/icon-<%=person.sex%>.svg" alt="">
-                  <p class="age"><%=(new Date().getFullYear()) - parseInt(person.birthdate.getFullYear())%> yrs old</p>
-                  <p> - </p>
-                  <p class="birthdate"><%=person.birthdate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })%></p>
-                </div>
+            <div class="img">
+              <!-- <img src="/images/placeholder-man.jpg" alt=""> -->
+              <img src="<%=person.image%>" alt="">
+            </div>
+            <div class="text">
+              <p class="name">
+                <%=person.name.last%>,
+                <%=person.name.first%>
+                <%=person.name.middle%>
+                <%=person.name.suffix%>
+              </p>
+              <div class="sub">
+                <img class="sex" src="/svg/icon-<%=person.sex%>.svg" alt="">
+                <p class="age"><%=(new Date().getFullYear()) - parseInt(person.birthdate.getFullYear())%> yrs old</p>
+                <p> - </p>
+                <p class="birthdate"><%=person.birthdate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })%></p>
               </div>
             </div>
-            <div class="responsibility"
-              data-bs-toggle="tooltip" 
-              data-bs-html="true"
-              data-bs-title="
+          </div>
+          <div class="responsibility" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="
                 <p><b>Legal Guardian: </b></p>
                 <p><%=person.legalGuardian.last%>,
                   <%=person.legalGuardian.first%>
@@ -65,33 +58,29 @@
                   <% } %>
                   <%=person.address.lot%>,
                   <%=person.address.street%></p>
-              "
-            >
-              <div class="upper">
-                <p class="legal-guardian-contact">
-                  <%=person.legalGuardianContact%>
-                </p>
-                <p class="legal-guardian">
-                  <%=person.legalGuardian.last%>,
-                  <%=person.legalGuardian.first%>
-                  <%=person.legalGuardian.middle%>
-                  <%=person.legalGuardian.suffix%>
-                </p>
-              </div>
-              <div class="lower">
-                <p class="address">
-                  <% if (person.address.unit){ %>
-                    <%=person.address.unit%>,
-                  <% } %>
-                  <%=person.address.lot%>,
-                  <%=person.address.street%>
-                </p>
-              </div>
+              ">
+            <div class="upper">
+              <p class="legal-guardian-contact">
+                <%=person.legalGuardianContact%>
+              </p>
+              <p class="legal-guardian">
+                <%=person.legalGuardian.last%>,
+                <%=person.legalGuardian.first%>
+                <%=person.legalGuardian.middle%>
+                <%=person.legalGuardian.suffix%>
+              </p>
             </div>
-            <div class="academic"
-              data-bs-toggle="tooltip" 
-              data-bs-html="true"
-              data-bs-title="
+            <div class="lower">
+              <p class="address">
+                <% if (person.address.unit){ %>
+                <%=person.address.unit%>,
+                <% } %>
+                <%=person.address.lot%>,
+                <%=person.address.street%>
+              </p>
+            </div>
+          </div>
+          <div class="academic" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="
               <p><b>Last School: </b></p>
               <p><%=person.academic.lastSchool%></p>
               <p><b>Last School Year: </b><%=person.academic.lastSchoolAttendance%></p>
@@ -100,51 +89,50 @@
                   <%=person.academic.lastLevel%></p>
                 <p><b>Expected Level: </b>Grade
                   <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance + parseInt(person.academic.lastLevel)%></p>
-              "
-            >
-              <div class="upper">
-                <p class="last-school-attendance">
-                  <%=person.academic.lastSchoolAttendance%>
-                </p>
-                <p class="last-school">
-                  <%=person.academic.lastSchool%>
+              ">
+            <div class="upper">
+              <p class="last-school-attendance">
+                <%=person.academic.lastSchoolAttendance%>
+              </p>
+              <p class="last-school">
+                <%=person.academic.lastSchool%>
+              </p>
+            </div>
+            <div class="lower">
+              <div class="oos-duration">
+                <img src="/svg/icon-duration.svg" alt="">
+                <p>
+                  <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance%>
+                  yrs
                 </p>
               </div>
-              <div class="lower">
-                <div class="oos-duration">
-                  <img src="/svg/icon-duration.svg" alt="">
-                  <p>
-                    <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance%>
-                    yrs
-                  </p>
-                </div>
-                <div class="last-level">
-                  <img src="/svg/icon-last.svg" alt="">
-                  <p>
-                    Grade
-                    <%=person.academic.lastLevel%>
-                  </p>
-                </div>
-                <div class="expected-level">
-                  <img src="/svg/icon-expected.svg" alt="">
-                  <p>
-                    Grade
-                    <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance + parseInt(person.academic.lastLevel)%>
-                  </p>
-                </div>
+              <div class="last-level">
+                <img src="/svg/icon-last.svg" alt="">
+                <p>
+                  Grade
+                  <%=person.academic.lastLevel%>
+                </p>
+              </div>
+              <div class="expected-level">
+                <img src="/svg/icon-expected.svg" alt="">
+                <p>
+                  Grade
+                  <%=(new Date().getFullYear()) - person.academic.lastSchoolAttendance + parseInt(person.academic.lastLevel)%>
+                </p>
               </div>
             </div>
-            <div class="buttons">
-              <a href="/delete/<%=person._id%>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Delete this Entry">
-                <button class="delete">
-                  <img src="/svg/icon-delete.svg" alt="">
-                </button>
-              </a>
-              <!-- <button class="edit">
+          </div>
+          <div class="buttons">
+            <a href="/delete/<%=person._id%>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Delete this Entry">
+              <button class="delete">
+                <img src="/svg/icon-delete.svg" alt="">
+              </button>
+            </a>
+            <!-- <button class="edit">
                 <img src="/svg/icon-edit.svg" alt="">
               </button> -->
-            </div>
-          </li>
+          </div>
+        </li>
         <% }) %>
       </ul>
     </div>

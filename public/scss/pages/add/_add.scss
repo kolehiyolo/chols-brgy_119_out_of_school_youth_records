@@ -14,7 +14,7 @@
         padding: 50px 100px;
         background-image: linear-gradient(30deg, rgba(71, 53, 233, 0.2), rgba(125, 34, 205, 0.2));
         position: relative;
-            z-index: 5;
+        z-index: 5;
 
         form {
             background-color: white;
@@ -39,8 +39,8 @@
 
                 .form-sub-group {
                     display: flex;
-                flex-direction: column;
-                gap: 10px;
+                    flex-direction: column;
+                    gap: 10px;
 
                     h2 {
                         font-size: 20px;
@@ -79,7 +79,7 @@
                                 }
 
                                 &.contact-number {
-width: 150px;
+                                    width: 150px;
                                 }
 
                                 &.unit,

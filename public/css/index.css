@@ -596,6 +596,7 @@ html body div.tooltip-inner * {
     background-image: url("../images/image-youth-2.jpg");
     background-position: center;
     background-size: cover;
+    z-index: 0;
     position: fixed;
     width: 100%;
     height: 100%;

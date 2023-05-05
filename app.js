@@ -4,33 +4,37 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 
-// * Setting Express
+// * Activating Express
 const app = express();
 
-// * Custom Modules
-// const placeholder = require(`./public/javascript/data.js`);
-const dbHandling = require(`./public/javascript/dbHandling.js`);
-
-// ! Fake Log In System
-let loggedIn = false;
-let username = "officialguy1";
-let password = "mesostrongwow0";
-
-// * Setting EJS
+// * Activating EJS
 app.set('view engine', 'ejs');
 
 // * Enabling body-parsing through POST
+// -* Makes form submissions work
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static("public"));
 
-// * Connecting to DB
+// * Custom Modules
+// -* dbHandling defines the database rules
+const dbHandling = require(`./public/javascript/dbHandling.js`);
+
+// * Connecting to Database
 mongoose.connect("mongodb://127.0.0.1:27017/barangayDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
+// ! Fake Log In System
+let loggedIn = true;
+let username = "officialguy1";
+let password = "mesostrongwow0";
+
+// * Defining Collections
+// -* Entry is collection name
+// -* dbHandling.personSchema is collection rules
 const ModelPerson = mongoose.model("Entry", dbHandling.personSchema);
 
 // * Express Routes
@@ -38,15 +42,17 @@ app.get("/", function (req, res) {
   console.log(`GET /`);
 
   if (!loggedIn) {
+    console.log(`User isn't logged in. Redirect to GET /log-in`);
     res.redirect("/login");
   }
 
-  ModelPerson.find({}, function (err, people) {
-    res.render("pages/home", {
-      persons: people
-    });
+  // -* First, find all documents in the ModelPerson collection
+  // -* Store all documents into "people" variable
+  // -* Pass "home" page to browser/user
+  // -* Pass data in "people" to browser/user
+  ModelPerson.find({}, (err, peopleFetched) => {
+    res.render("pages/home", {peopleExpected: peopleFetched});
   });
-
 });
 
 app.get("/login", function (req, res) {
@@ -56,6 +62,8 @@ app.get("/login", function (req, res) {
     res.redirect("/");
   }
 
+  // -* Pass "login" page to browser/user
+  // -* Pass "failedLogin" as false since this is user's initial login attempt
   res.render("pages/login", {
     failedLogin: false
   });
@@ -115,6 +123,7 @@ app.post("/add", function (req, res) {
     res.redirect("/login");
   }
 
+  // * Create new document "person" for the "ModelPerson"/"Entries" collection
   const person = new ModelPerson({
     name: {
       last: req.body.nameLast,
@@ -147,6 +156,8 @@ app.post("/add", function (req, res) {
     }
   });
 
+  // * Put "person" document into "ModelPerson"/"Entries" collection
+  // * Redirect to "GET /" once successful
   ModelPerson.collection.insertOne(person, (err) => {
     if (!err) {
       console.log(`Save Data:`);
@@ -167,6 +178,9 @@ app.get("/delete/:entryId", function (req, res) {
 
   // res.send(`GET /delete/${requestedEntryId}`);
 
+  // * Locate document inside "ModelPerson"/"Entries" collection
+  // * Once found, remove from collection
+  // * Redirect to "GET /" once successful
   ModelPerson.deleteOne({
     _id: requestedEntryId
   }, (err) => {

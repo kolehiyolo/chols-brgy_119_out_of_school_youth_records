@@ -24,7 +24,7 @@ const schema = {
     address: {
         unit: {
             type: String,
-            required: true
+            required: false
         },
         lot: {
             type: String,
