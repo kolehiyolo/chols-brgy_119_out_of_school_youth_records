@@ -22,15 +22,20 @@ app.use(express.static("public"));
 const dbHandling = require(`./public/javascript/dbHandling.js`);
 
 // * Connecting to Database
-mongoose.connect("mongodb://127.0.0.1:27017/barangayDB", {
+mongoose.connect("mongodb+srv://admin-kolehiyolo:amazing@cluster0.ys8lv.mongodb.net/barangayDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
-// ! Fake Log In System
-let loggedIn = false;
-let username = "officialguy1";
-let password = "mesostrongwow0";
+// mongoose.connect("mongodb://127.0.0.1:27017/barangayDB", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+
+// ! Log In
+let loggedIn = true;
+let username = "brgyOfficial";
+let password = "pasayCity";
 
 // * Defining Collections
 // -* Entry is collection name
@@ -51,8 +56,89 @@ app.get("/", function (req, res) {
   // -* Pass "home" page to browser/user
   // -* Pass data in "people" to browser/user
   ModelPerson.find({}, (err, peopleFetched) => {
-    res.render("pages/home", {peopleExpected: peopleFetched});
+    res.render("pages/home", {
+      peopleExpected: peopleFetched
+    });
   });
+});
+
+app.get("/search/:input", function (req, res) {
+  console.log(`GET /search/${req.params.input}`);
+
+  if (!loggedIn) {
+    console.log(`User isn't logged in. Redirect to GET /log-in`);
+    res.redirect("/login");
+  }
+
+  // -* First, find all documents in the ModelPerson collection
+  // -* Store all documents into "people" variable
+  // -* Pass "home" page to browser/user
+  // -* Pass data in "people" to browser/user
+  ModelPerson.find({
+    $or: [{
+        "name.last": {
+          "$regex": req.params.input,
+          "$options": "i"
+        },
+      },
+      {
+        "name.first": {
+          "$regex": req.params.input,
+          "$options": "i"
+        }
+      },
+      // {
+      //   "name.last": req.params.input,
+      // },
+      // {
+      //   "name.first": req.params.input,
+      // },
+    ]
+  }, (err, peopleFetched) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(peopleFetched);
+      res.render("pages/home", {
+        peopleExpected: peopleFetched
+      });
+    }
+  });
+  // ModelPerson.find({
+  //   $or: [{
+  //     name: {
+  //       last: req.params.input
+  //     }
+  //   }, {
+  //     name: {
+  //       first: req.params.input
+  //     }
+  //   }, ]
+  // }, (err, peopleFetched) => {
+  //   if (err) {
+  //     console.log(err); 
+  //   } else {
+  //     console.log(peopleFetched); 
+  //     res.render("pages/home", {
+  //       peopleExpected: peopleFetched
+  //     });
+  //   }
+  // });
+});
+
+app.post("/search", function (req, res) {
+  console.log(`POST /search`);
+
+  if (!loggedIn) {
+    console.log(`User isn't logged in. Redirect to GET /log-in`);
+    res.redirect("/login");
+  }
+
+  // -* First, find all documents in the ModelPerson collection
+  // -* Store all documents into "people" variable
+  // -* Pass "home" page to browser/user
+  // -* Pass data in "people" to browser/user
+  res.redirect(`/search/${req.body.search}`);
 });
 
 app.get("/login", function (req, res) {

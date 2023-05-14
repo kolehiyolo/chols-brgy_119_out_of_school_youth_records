@@ -8,9 +8,9 @@
       <span class="navbar-toggler-icon"></span>
     </button> -->
   <div class="menu" id="navbarSupportedContent">
-    <form class="d-flex" role="search">
-      <input class="form-control" type="text" placeholder="Search by name" aria-label="default input example">
-      <button type="button" class="btn btn-light" type="submit"  data-bs-toggle="tooltip"  data-bs-title="Wowzer">
+    <form class="d-flex" role="search" method="POST" action="/search">
+      <input class="form-control" type="text" name="search" placeholder="Search by name" aria-label="default input example">
+      <button class="btn btn-light" type="submit"  data-bs-toggle="tooltip"  data-bs-title="Wowzer">
         <img src="/svg/icon-search.svg" alt="">
       </button>
     </form>
