@@ -22,16 +22,16 @@ app.use(express.static("public"));
 const dbHandling = require(`./public/javascript/dbHandling.js`);
 
 // * Connecting to Remote Database
-mongoose.connect("mongodb+srv://admin-kolehiyolo:amazing@cluster0.ys8lv.mongodb.net/barangayDB", {
+// mongoose.connect("mongodb+srv://admin-kolehiyolo:amazing@cluster0.ys8lv.mongodb.net/barangayDB", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true`
+// });
+
+// * Connecting to Local Database
+mongoose.connect("mongodb://127.0.0.1:27017/barangayDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-
-// * Connecting to Local Database
-// mongoose.connect("mongodb://127.0.0.1:27017/barangayDB", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
 
 // ! Log In
 let loggedIn = true;
