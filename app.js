@@ -4,6 +4,17 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 
+// * MySQL Setup
+const mysql = require('mysql2');
+const dotenv = require('dotenv');
+dotenv.config();
+const pool = mysql.createPool({
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE
+}).promise();
+
 // * Activating Express
 const app = express();
 
@@ -56,9 +67,54 @@ app.get("/", function (req, res) {
   // -* Store all documents into "people" variable
   // -* Pass "home" page to browser/user
   // -* Pass data in "people" to browser/user
-  ModelPerson.find({}, (err, peopleFetched) => {
+  // ModelPerson.find({}, (err, peopleFetched) => {
+  //   res.render("pages/home", {
+  //     peopleExpected: peopleFetched
+  //   });
+  // });
+
+  async function getEntries(runMe) {
+    const [rows] = await pool.query("SELECT * FROM entries");
+    runMe(rows);
+    return rows;
+  }
+
+  getEntries((result) => {
+    console.log(result);
     res.render("pages/home", {
-      peopleExpected: peopleFetched
+      peopleExpected: result
+    });
+  });
+});
+
+app.get("/deleted", function (req, res) {
+  console.log(`GET /`);
+
+  if (!loggedIn) {
+    console.log(`User isn't logged in. Redirect to GET /log-in`);
+    res.redirect("/login");
+  }
+
+  // -* First, find all documents in the ModelPerson collection
+  // -* Store all documents into "people" variable
+  // -* Pass "home" page to browser/user
+  // -* Pass data in "people" to browser/user
+  // ModelPerson.find({}, (err, peopleFetched) => {
+  //   res.render("pages/home", {
+  //     peopleExpected: peopleFetched
+  //   });
+  // });
+
+  async function getEntries(runMe) {
+    const [rows] = await pool.query("SELECT * FROM deletedEntries");
+    runMe(rows);
+    return rows;
+  }
+
+  getEntries((result) => {
+    console.log(result);
+    res.render("pages/deleted", {
+      peopleExpected: result
     });
   });
 });
@@ -75,56 +131,47 @@ app.get("/search/:input", function (req, res) {
   // -* Store all documents into "people" variable
   // -* Pass "home" page to browser/user
   // -* Pass data in "people" to browser/user
-  ModelPerson.find({
-    $or: [{
-        "name.last": {
-          "$regex": req.params.input,
-          "$options": "i"
-        },
-      },
-      {
-        "name.first": {
-          "$regex": req.params.input,
-          "$options": "i"
-        }
-      },
-      // {
-      //   "name.last": req.params.input,
-      // },
-      // {
-      //   "name.first": req.params.input,
-      // },
-    ]
-  }, (err, peopleFetched) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(peopleFetched);
-      res.render("pages/home", {
-        peopleExpected: peopleFetched
-      });
-    }
-  });
   // ModelPerson.find({
   //   $or: [{
-  //     name: {
-  //       last: req.params.input
-  //     }
-  //   }, {
-  //     name: {
-  //       first: req.params.input
-  //     }
-  //   }, ]
+  //       "name.last": {
+  //         "$regex": req.params.input,
+  //         "$options": "i"
+  //       },
+  //     },
+  //     {
+  //       "name.first": {
+  //         "$regex": req.params.input,
+  //         "$options": "i"
+  //       }
+  //     },
+  //   ]
   // }, (err, peopleFetched) => {
   //   if (err) {
-  //     console.log(err); 
+  //     console.log(err);
   //   } else {
-  //     console.log(peopleFetched); 
+  //     console.log(peopleFetched);
   //     res.render("pages/home", {
   //       peopleExpected: peopleFetched
   //     });
   //   }
   // });
+
+  async function getEntry(runMe, id) {
+    const [rows] = await pool.query(`
+    SELECT * 
+    FROM entries
+    WHERE nameLast = ?
+    OR nameFirst = ?
+    `, [id, id]);
+    runMe(rows);
+  }
+
+  getEntry((result) => {
+    console.log(result);
+    res.render("pages/home", {
+      peopleExpected: result
+    });
+  }, req.params.input);
 });
 
 app.post("/search", function (req, res) {
@@ -211,47 +258,126 @@ app.post("/add", function (req, res) {
   }
 
   // * Create new document "person" for the "ModelPerson"/"Entries" collection
-  const person = new ModelPerson({
-    name: {
-      last: req.body.nameLast,
-      first: req.body.nameFirst,
-      middle: req.body.nameMiddle,
-      suffix: req.body.nameSuffix,
-      nickname: req.body.nameNickname,
-    },
+  // const person = new ModelPerson({
+  //   name: {
+  //     last: req.body.nameLast,
+  //     first: req.body.nameFirst,
+  //     middle: req.body.nameMiddle,
+  //     suffix: req.body.nameSuffix,
+  //     nickname: req.body.nameNickname,
+  //   },
+  //   image: req.body.image,
+  //   birthdate: req.body.birthdate,
+  //   sex: req.body.sex,
+  //   legalGuardian: {
+  //     last: req.body.legalNameLast,
+  //     first: req.body.legalNameFirst,
+  //     middle: req.body.legalNameMiddle,
+  //     suffix: req.body.legalNameSuffix,
+  //     nickname: req.body.legalNameNickname,
+  //   },
+  //   legalGuardianContact: req.body.legalGuardianContact,
+  //   address: {
+  //     unit: req.body.addressUnit,
+  //     lot: req.body.addressLot,
+  //     street: req.body.addressStreet,
+  //     remarks: req.body.addressRemarks,
+  //   },
+  //   academic: {
+  //     lastSchool: req.body.academicLastSchool,
+  //     lastSchoolAttendance: req.body.academicLastSchoolAttendance,
+  //     lastLevel: req.body.academicLastLevel,
+  //   }
+  // });
+
+  const info = {
+    nameLast: req.body.nameLast,
+    nameFirst: req.body.nameFirst,
+    nameMiddle: req.body.nameMiddle,
+    nameSuffix: req.body.nameSuffix,
+    nameNick: req.body.nameNick,
     image: req.body.image,
     birthdate: req.body.birthdate,
     sex: req.body.sex,
-    legalGuardian: {
-      last: req.body.legalNameLast,
-      first: req.body.legalNameFirst,
-      middle: req.body.legalNameMiddle,
-      suffix: req.body.legalNameSuffix,
-      nickname: req.body.legalNameNickname,
-    },
+    legalGuardianLast: req.body.legalGuardianLast,
+    legalGuardianFirst: req.body.legalGuardianFirst,
+    legalGuardianMiddle: req.body.legalGuardianMiddle,
+    legalGuardianSuffix: req.body.legalGuardianSuffix,
+    legalGuardianNick: req.body.legalGuardianNick,
     legalGuardianContact: req.body.legalGuardianContact,
-    address: {
-      unit: req.body.addressUnit,
-      lot: req.body.addressLot,
-      street: req.body.addressStreet,
-      remarks: req.body.addressRemarks,
-    },
-    academic: {
-      lastSchool: req.body.academicLastSchool,
-      lastSchoolAttendance: req.body.academicLastSchoolAttendance,
-      lastLevel: req.body.academicLastLevel,
-    }
-  });
+    addressUnit: req.body.addressUnit,
+    addressLot: req.body.addressLot,
+    addressStreet: req.body.addressStreet,
+    addressRemarks: req.body.addressRemarks,
+    academicLastSchool: req.body.academicLastSchool,
+    academicLastSchoolAttendance: req.body.academicLastSchoolAttendance,
+    academicLastLevel: req.body.academicLastLevel
+  }
 
   // * Put "person" document into "ModelPerson"/"Entries" collection
   // * Redirect to "GET /" once successful
-  ModelPerson.collection.insertOne(person, (err) => {
-    if (!err) {
-      console.log(`Save Data:`);
-      console.log(person);
-      res.redirect("/");
-    }
-  });
+  // ModelPerson.collection.insertOne(person, (err) => {
+  //   if (!err) {
+  //     console.log(`Save Data:`);
+  //     console.log(person);
+  //     res.redirect("/");
+  //   }
+  // });
+
+  // async function getEntry(runMe, id) {
+  //   const [rows] = await pool.query(`
+  //   SELECT * 
+  //   FROM entries
+  //   WHERE nameLast = ?
+  //   OR nameFirst = ?
+  //   `, [id, id]);
+  //   runMe(rows);
+  // }
+
+  // getEntry((result) => {
+  //   console.log(result);
+  //   res.render("pages/home", {
+  //     peopleExpected: result
+  //   });
+  // }, req.params.input);
+
+  async function createEntry(runMe, info) {
+    const [result] = await pool.query(`
+    INSERT INTO entries (nameLast, nameFirst, nameMiddle, nameSuffix, nameNick, image, birthdate, sex, legalGuardianLast, legalGuardianFirst, legalGuardianMiddle, legalGuardianSuffix, legalGuardianNick, legalGuardianContact, addressUnit, addressLot, addressStreet, addressRemarks, academicLastSchool, academicLastSchoolAttendance, academicLastLevel )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `, [
+      info.nameLast,
+      info.nameFirst,
+      info.nameMiddle,
+      info.nameSuffix,
+      info.nameNick,
+      info.image,
+      info.birthdate,
+      info.sex,
+      info.legalGuardianLast,
+      info.legalGuardianFirst,
+      info.legalGuardianMiddle,
+      info.legalGuardianSuffix,
+      info.legalGuardianNick,
+      info.legalGuardianContact,
+      info.addressUnit,
+      info.addressLot,
+      info.addressStreet,
+      info.addressRemarks,
+      info.academicLastSchool,
+      info.academicLastSchoolAttendance,
+      info.academicLastLevel
+    ]);
+
+    console.log(`RESULT:`); 
+    console.log(result);
+    runMe(result);
+  }
+
+  createEntry((result) => {
+    console.log(result);
+    res.redirect("/");
+  }, info);
 });
 
 app.get("/delete/:entryId", function (req, res) {
@@ -276,6 +402,65 @@ app.get("/delete/:entryId", function (req, res) {
       res.redirect("/");
     }
   });
+
+  async function deleteEntry(runMe, id) {
+    await pool.query(`
+    INSERT INTO deletedEntries
+    SELECT *
+    FROM entries
+    WHERE id=?
+    `, [id, id]);
+
+    const [rows] = await pool.query(`
+    DELETE
+    FROM entries
+    WHERE id=?
+    `, [id]);
+    runMe(rows);
+  }
+
+  deleteEntry((result) => {
+    console.log(result);
+    res.redirect("/");
+  }, requestedEntryId);
+});
+
+app.get("/permadelete/:entryId", function (req, res) {
+  console.log(`GET /delete/${req.params.entryId}`);
+
+  if (!loggedIn) {
+    res.redirect("/login");
+  }
+
+  const requestedEntryId = req.params.entryId;
+
+  // res.send(`GET /delete/${requestedEntryId}`);
+
+  // * Locate document inside "ModelPerson"/"Entries" collection
+  // * Once found, remove from collection
+  // * Redirect to "GET /" once successful
+  ModelPerson.deleteOne({
+    _id: requestedEntryId
+  }, (err) => {
+    if (!err) {
+      console.log(err);
+      res.redirect("/");
+    }
+  });
+
+  async function deleteEntry(runMe, id) {
+    const [rows] = await pool.query(`
+    DELETE
+    FROM deletedEntries
+    WHERE id=?
+    `, [id]);
+    runMe(rows);
+  }
+
+  deleteEntry((result) => {
+    console.log(result);
+    res.redirect("/deleted");
+  }, requestedEntryId);
 });
 
 let port = process.env.PORT;

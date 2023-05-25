@@ -38,15 +38,15 @@ async function createNote(runMe, title, contents) {
   getNote(runMe, result.insertId);
 }
 
-// const notes = getNotes((result)=> {
-//   console.log(result); 
-// });
+const notes = getNotes((result)=> {
+  console.log(result); 
+});
 // const note = getNote((result)=> {
 //   console.log(result); 
 // }, 2);
-createNote((result)=> {
-  console.log(result); 
-}, "Another note", "What am I doing");
+// createNote((result)=> {
+//   console.log(result); 
+// }, "Another note", "What am I doing");
 // const notes = await getNotes();
 // console.log(notes); 
 
