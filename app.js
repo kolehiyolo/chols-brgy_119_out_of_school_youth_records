@@ -8,12 +8,18 @@ const mongoose = require('mongoose');
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 dotenv.config();
-const pool = mysql.createPool({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE
-}).promise();
+// const pool = mysql.createPool({
+//   host: process.env.MYSQL_HOST,
+//   user: process.env.MYSQL_USER,
+//   password: process.env.MYSQL_PASSWORD,
+//   database: process.env.MYSQL_DATABASE
+// }).promise();
+
+// require('dotenv').config()
+// const mysql = require('mysql2')
+const pool = mysql.createConnection(process.env.DATABASE_URL).promise();
+console.log('Connected to PlanetScale!')
+// connection.end()
 
 // * Activating Express
 const app = express();
