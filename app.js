@@ -2,7 +2,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const mongoose = require('mongoose');
 
 // * MySQL Setup
 const mysql = require('mysql2');
@@ -18,12 +17,6 @@ const pool = mysql.createPool({
   }
 }).promise();
 
-// require('dotenv').config()
-// const mysql = require('mysql2')
-// const pool = mysql.createConnection(process.env.DATABASE_URL).promise();
-console.log('Connected to PlanetScale!')
-// connection.end()
-
 // * Activating Express
 const app = express();
 
@@ -37,50 +30,24 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-// * Custom Modules
-// -* dbHandling defines the database rules
-const dbHandling = require(`./public/javascript/dbHandling.js`);
-
-// * Connecting to Remote Database
-// mongoose.connect("mongodb+srv://admin-kolehiyolo:amazing@cluster0.ys8lv.mongodb.net/barangayDB", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true`
-// });
-
-// * Connecting to Local Database
-mongoose.connect("mongodb://127.0.0.1:27017/barangayDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-
 // ! Log In
-let loggedIn = true;
-let username = "brgyOfficial";
-let password = "pasayCity";
+let loggedIn = false;
+let username = process.env.loginUsername;
+let password = process.env.loginPassword;
 
-// * Defining Collections
-// -* Entry is collection name
-// -* dbHandling.personSchema is collection rules
-const ModelPerson = mongoose.model("Entry", dbHandling.personSchema);
-
-// * Express Routes
-app.get("/", function (req, res) {
-  console.log(`GET /`);
-
+function checkLoggedin(res) {
   if (!loggedIn) {
     console.log(`User isn't logged in. Redirect to GET /log-in`);
     res.redirect("/login");
   }
+}
 
-  // -* First, find all documents in the ModelPerson collection
-  // -* Store all documents into "people" variable
-  // -* Pass "home" page to browser/user
-  // -* Pass data in "people" to browser/user
-  // ModelPerson.find({}, (err, peopleFetched) => {
-  //   res.render("pages/home", {
-  //     peopleExpected: peopleFetched
-  //   });
-  // });
+// * Express Routes
+// -* GET Home
+app.get("/", function (req, res) {
+  console.log(`GET /`);
+
+  checkLoggedin(res);
 
   async function getEntries(runMe) {
     const [rows] = await pool.query("SELECT * FROM entries");
@@ -96,36 +63,11 @@ app.get("/", function (req, res) {
   });
 });
 
-app.get("/about", function (req, res) {
-  console.log(`GET /about`);
-
-  if (!loggedIn) {
-    console.log(`User isn't logged in. Redirect to GET /log-in`);
-    res.redirect("/login");
-  }
-
-  res.render("pages/about", {
-    // peopleExpected: result
-  });
-});
-
+// -* GET Deleted
 app.get("/deleted", function (req, res) {
   console.log(`GET /`);
 
-  if (!loggedIn) {
-    console.log(`User isn't logged in. Redirect to GET /log-in`);
-    res.redirect("/login");
-  }
-
-  // -* First, find all documents in the ModelPerson collection
-  // -* Store all documents into "people" variable
-  // -* Pass "home" page to browser/user
-  // -* Pass data in "people" to browser/user
-  // ModelPerson.find({}, (err, peopleFetched) => {
-  //   res.render("pages/home", {
-  //     peopleExpected: peopleFetched
-  //   });
-  // });
+  checkLoggedin(res);
 
   async function getEntries(runMe) {
     const [rows] = await pool.query("SELECT * FROM deletedEntries");
@@ -141,13 +83,21 @@ app.get("/deleted", function (req, res) {
   });
 });
 
+// -* GET About
+app.get("/about", function (req, res) {
+  console.log(`GET /about`);
+
+  checkLoggedin(res);
+
+  res.render("pages/about", {
+  });
+});
+
+// -* GET Search with Params(Input)
 app.get("/search/:input", function (req, res) {
   console.log(`GET /search/${req.params.input}`);
 
-  if (!loggedIn) {
-    console.log(`User isn't logged in. Redirect to GET /log-in`);
-    res.redirect("/login");
-  }
+  checkLoggedin(res);
 
   // -* First, find all documents in the ModelPerson collection
   // -* Store all documents into "people" variable
@@ -196,13 +146,11 @@ app.get("/search/:input", function (req, res) {
   }, req.params.input);
 });
 
+// -* POST Search
 app.post("/search", function (req, res) {
   console.log(`POST /search`);
 
-  if (!loggedIn) {
-    console.log(`User isn't logged in. Redirect to GET /log-in`);
-    res.redirect("/login");
-  }
+  checkLoggedin(res);
 
   // -* First, find all documents in the ModelPerson collection
   // -* Store all documents into "people" variable
@@ -211,10 +159,12 @@ app.post("/search", function (req, res) {
   res.redirect(`/search/${req.body.search}`);
 });
 
+// -* GET Login
 app.get("/login", function (req, res) {
   console.log(`GET /log-in`);
 
   if (loggedIn) {
+    console.log(`User is already logged in. Redirect to GET /`);
     res.redirect("/");
   }
 
@@ -225,6 +175,7 @@ app.get("/login", function (req, res) {
   });
 });
 
+// -* GET Register
 app.get("/register", function (req, res) {
   console.log(`GET /register`);
 
@@ -265,9 +216,7 @@ app.get("/logout", function (req, res) {
 app.get("/add", function (req, res) {
   console.log(`GET /add`);
 
-  if (!loggedIn) {
-    res.redirect("/login");
-  }
+  checkLoggedin(res);
 
   res.render("pages/add");
 });
@@ -275,42 +224,7 @@ app.get("/add", function (req, res) {
 app.post("/add", function (req, res) {
   console.log(`POST /add`);
 
-  if (!loggedIn) {
-    res.redirect("/login");
-  }
-
-  // * Create new document "person" for the "ModelPerson"/"Entries" collection
-  // const person = new ModelPerson({
-  //   name: {
-  //     last: req.body.nameLast,
-  //     first: req.body.nameFirst,
-  //     middle: req.body.nameMiddle,
-  //     suffix: req.body.nameSuffix,
-  //     nickname: req.body.nameNickname,
-  //   },
-  //   image: req.body.image,
-  //   birthdate: req.body.birthdate,
-  //   sex: req.body.sex,
-  //   legalGuardian: {
-  //     last: req.body.legalNameLast,
-  //     first: req.body.legalNameFirst,
-  //     middle: req.body.legalNameMiddle,
-  //     suffix: req.body.legalNameSuffix,
-  //     nickname: req.body.legalNameNickname,
-  //   },
-  //   legalGuardianContact: req.body.legalGuardianContact,
-  //   address: {
-  //     unit: req.body.addressUnit,
-  //     lot: req.body.addressLot,
-  //     street: req.body.addressStreet,
-  //     remarks: req.body.addressRemarks,
-  //   },
-  //   academic: {
-  //     lastSchool: req.body.academicLastSchool,
-  //     lastSchoolAttendance: req.body.academicLastSchoolAttendance,
-  //     lastLevel: req.body.academicLastLevel,
-  //   }
-  // });
+  checkLoggedin(res);
 
   const info = {
     nameLast: req.body.nameLast,
@@ -335,33 +249,6 @@ app.post("/add", function (req, res) {
     academicLastSchoolAttendance: req.body.academicLastSchoolAttendance,
     academicLastLevel: req.body.academicLastLevel
   }
-
-  // * Put "person" document into "ModelPerson"/"Entries" collection
-  // * Redirect to "GET /" once successful
-  // ModelPerson.collection.insertOne(person, (err) => {
-  //   if (!err) {
-  //     console.log(`Save Data:`);
-  //     console.log(person);
-  //     res.redirect("/");
-  //   }
-  // });
-
-  // async function getEntry(runMe, id) {
-  //   const [rows] = await pool.query(`
-  //   SELECT * 
-  //   FROM entries
-  //   WHERE nameLast = ?
-  //   OR nameFirst = ?
-  //   `, [id, id]);
-  //   runMe(rows);
-  // }
-
-  // getEntry((result) => {
-  //   console.log(result);
-  //   res.render("pages/home", {
-  //     peopleExpected: result
-  //   });
-  // }, req.params.input);
 
   async function createEntry(runMe, info) {
     const [result] = await pool.query(`
@@ -405,25 +292,9 @@ app.post("/add", function (req, res) {
 app.get("/delete/:entryId", function (req, res) {
   console.log(`GET /delete/${req.params.entryId}`);
 
-  if (!loggedIn) {
-    res.redirect("/login");
-  }
+  checkLoggedin(res);
 
   const requestedEntryId = req.params.entryId;
-
-  // res.send(`GET /delete/${requestedEntryId}`);
-
-  // * Locate document inside "ModelPerson"/"Entries" collection
-  // * Once found, remove from collection
-  // * Redirect to "GET /" once successful
-  ModelPerson.deleteOne({
-    _id: requestedEntryId
-  }, (err) => {
-    if (!err) {
-      console.log(err);
-      res.redirect("/");
-    }
-  });
 
   async function deleteEntry(runMe, id) {
     await pool.query(`
@@ -450,25 +321,9 @@ app.get("/delete/:entryId", function (req, res) {
 app.get("/permadelete/:entryId", function (req, res) {
   console.log(`GET /delete/${req.params.entryId}`);
 
-  if (!loggedIn) {
-    res.redirect("/login");
-  }
+  checkLoggedin(res);
 
   const requestedEntryId = req.params.entryId;
-
-  // res.send(`GET /delete/${requestedEntryId}`);
-
-  // * Locate document inside "ModelPerson"/"Entries" collection
-  // * Once found, remove from collection
-  // * Redirect to "GET /" once successful
-  ModelPerson.deleteOne({
-    _id: requestedEntryId
-  }, (err) => {
-    if (!err) {
-      console.log(err);
-      res.redirect("/");
-    }
-  });
 
   async function deleteEntry(runMe, id) {
     const [rows] = await pool.query(`
