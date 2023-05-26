@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<%- include("../partials/head"); -%>
+
+<body>
+    <!-- * Header -->
+    <%- include("../partials/header"); -%>
+
+    <div class="banner-area" id="case">
+        <h2>Out Of School Youth</h2>
+        <div class="filter"></div>
+    </div>
+    <div class="content">
+        <div class="about">
+            <blockquote>
+                <h2>About Us</h2>
+                <p>We are a team consisting of five student individuals (Laxa, Cinco, Salonga, Simpao, and Maleniza) who have developed a computerized system to streamline data management. Our system allows authorized personnel to login and access the database, eliminating the need for manual handling through paper documents. This not only saves time but also reduces the risk of misplaced or lost files.</p>
+            </blockquote>
+            <div class="images">
+                <img id="logo-adu" src="/images/logo-adu.png">
+                <img id="logo-cs" src="/images/logo-cs.png">
+            </div>
+        </div>
+        <footer>
+            <p class="text-footer">
+                &#169; 2023 Adamson University
+            </p>
+            <div class="devs" id="contact">
+                <div class="dev">
+                    <h2>Front-end</h2>
+                    <p>Ken Freidrich Laxa</p>
+                    <a href="mailto:ken.freidrich.laxa@adamson.edu.ph">
+                        <p>ken.freidrich.laxa@adamson.edu.ph</p>
+                    </a>
+                    <p>In charge of managing the layout of the website.</p>
+                </div>
+                <div class="dev">
+                    <h2>Front-end</h2>
+                    <p>Jhon Andre Maleniza</p>
+                    <a href="mailto:jhon.andre.maleniza@adamson.edu.ph" >
+                        <p>jhon.andre.maleniza@adamson.edu.ph</p>
+                    </a>
+                    <p>In charge of managing the layout of the website.</p>
+                </div>
+                <div class="dev">
+                    <h2>Database</h2>
+                    <p>Emmanuel Angelo Simpao</p>
+                    <a href="mailto:emmanuel.angelo.simpao@adamson.edu.ph">
+                        <p>emmanuel.angelo.simpao@adamson.edu.ph</p>
+                    </a>
+                    <p>In charge of managing the files and other database-related areas.</p>
+                </div>
+                <div class="dev">
+                    <h2>Database</h2>
+                    <p>Theolo Seanon Paul Cinco</p>
+                    <a href="mailto:theolo.seanon.paul.cinco@adamson.edu.ph">
+                        <p>theolo.seanon.paul.cinco@adamson.edu.ph</p>
+                    </a>
+                    <p>In charge of managing the files and other database-related areas.</p>
+                </div>
+                <div class="dev">
+                    <h2>Back-end</h2>
+                    <p>Zyrich Kio Salonga</p>
+                    <a href="mailto:zyrich.kio.salonga@adamson.edu.ph">
+                        <p>zyrich.kio.salonga@adamson.edu.ph</p>
+                    </a>
+                    <p>Responsible for handling problems on the site.</p>
+                </div>
+            </div>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        </footer>
+    </div>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        .banner-area {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            /* top: 00px; */
+            background-image: url("/images/image-adamson.png");
+
+
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-position: center center;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .banner-area h2 {
+            /* padding: 18%; */
+            font-size: 100px;
+            /* height: 100%; */
+            text-transform: uppercase;
+            color: #000000;
+            width: 100%;
+            opacity: .50;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .banner-area .filter {
+            background: #cf1bc6;
+            opacity: .80;
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        h2 {
+            position: center;
+
+
+        }
+
+        .content {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            /* gap: 20px; */
+            top: 100vh;
+            position: relative;
+        }
+
+        .about {
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            
+            background: #ddd;
+            gap: 50px;
+            height: 100vh;
+        }
+
+        .about blockquote {
+            font-size: 18px;
+            width: 500px;
+        }
+
+        .about .images {
+            position: relative;
+            width: 500px;
+            height: 100%;
+        }
+
+        .about .images img {
+            position: absolute;
+
+        }
+
+        .about .images img#logo-adu {
+            top: 50%;
+            left: 0;
+            width: 475px;
+            height: 475px;
+            transform: translate(150px, -300px);
+        }
+
+        .about .images img#logo-cs {
+            top: 50%;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            transform: translate(-25px, -160px);
+        }
+
+        footer {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            /* top: 100vh; */
+            background-color: rgb(128, 53, 172);
+            padding: 50px !important;
+            color: white;
+            /* font-weight: bold; */
+        }
+
+        footer .text-footer {
+font-size: 25px;
+        }
+
+        footer .devs {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 30px;
+
+        }
+
+        footer .dev {
+            /* flex-shrink: 1; */
+            font-size: 12px;
+            flex: 1 1 0px;
+        }
+
+        footer .dev h2 {
+            font-size: 20px;
+        }
+
+        footer .dev p:nth-child(2) {
+            /* color: red; */
+            font-size: 18px;
+        }
+
+        footer .dev p:nth-child(4) {
+            /* color: red; */
+            padding-top: 10px;
+            font-style: italic;
+        }
+
+        footer .dev a {
+            color: white;
+        }
+
+        * {
+            /* border: dashed 1px red; */
+        }
+    </style>
+</body>
+
+
+
+
+</html>

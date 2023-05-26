@@ -204,7 +204,6 @@ html body div.tooltip-inner * {
   }
   html body .navbar .navbar-brand {
     padding: 20px 0;
-    margin-right: auto;
     color: white;
     font-weight: 500;
     display: flex;
@@ -227,6 +226,21 @@ html body div.tooltip-inner * {
     color: rgba(255, 255, 255, 0.7);
     font-weight: normal;
     font-size: 14px;
+  }
+  html body .navbar .navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: auto;
+    align-items: center;
+    gap: 20px;
+  }
+  html body .navbar .navigation li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: auto;
+    align-items: center;
   }
   html body .navbar .menu {
     display: flex;

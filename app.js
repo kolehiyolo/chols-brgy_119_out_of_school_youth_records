@@ -87,6 +87,19 @@ app.get("/", function (req, res) {
   });
 });
 
+app.get("/about", function (req, res) {
+  console.log(`GET /about`);
+
+  if (!loggedIn) {
+    console.log(`User isn't logged in. Redirect to GET /log-in`);
+    res.redirect("/login");
+  }
+
+  res.render("pages/about", {
+    // peopleExpected: result
+  });
+});
+
 app.get("/deleted", function (req, res) {
   console.log(`GET /`);
 
@@ -369,7 +382,7 @@ app.post("/add", function (req, res) {
       info.academicLastLevel
     ]);
 
-    console.log(`RESULT:`); 
+    console.log(`RESULT:`);
     console.log(result);
     runMe(result);
   }

@@ -25,7 +25,7 @@
 
         .navbar-brand {
             padding: 20px 0;
-            margin-right: auto;
+            
             color: white;
             font-weight: 500;
 
@@ -52,6 +52,24 @@
                     font-weight: normal;
                     font-size: 14px;
                 }
+            }
+        }
+
+        .navigation {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-right: auto;
+            align-items: center;
+            gap: 20px;
+
+            li {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-right: auto;
+                align-items: center;
+                // gap: 20px;
             }
         }
 
